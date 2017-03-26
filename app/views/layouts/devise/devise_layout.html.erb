@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'devise/application', media: 'all', 'data-turbolinks-track': true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+  </head>
+  <body>
+    <main id="<%= controller.controller_name %>-<%= controller.action_name %>">
+      <%= render "layouts/navbar" %>
+
+      <header class="page-header text-center">
+        <h1><%= yield(:header) %></h1>
+      </header>
+
+      <div class="container">
+        <div class="row">
+          <section id="content" class="panel panel-default col-md-6 col-md-push-3">
+            <%= render "shared/flash_message" %>
+            <%= yield %>
+          </section><!-- #content -->
+        </div>
+      </div><!-- .container -->
+    </main><!-- #<%= controller.controller_name %>-<%= controller.action_name %> -->
+  </body>
+</html>

@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'fd4573ea46092d1ab7f544ad77c6d4ddc5b02ed915bec1b3941175e555402005d3342791eedeccfbf23b4f6238409a0fdcce5aeeac1b2a5db5aa24c5f846d693'
+  # config.secret_key = 'ba7941ccb7370fd6b13cf9557d9d3cdfcc5036776f93cc843525d37a1aa042538ff9b75208582327a988802e36f82376c5b2f781afd7f8ebe3ac3696cc89abf2'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -108,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'da36cd7854e7502bf4aa327002df118249f293cdd0d60b78b25088bb5ee13dda33dd2bfee4eba8b229c05021ab6d1da46ce227802869e462b6ea6d3f68c3ddd3'
+  # config.pepper = 'e083840602274e365746393ef76f6beb154ec587a4ded2a2b962e3bbb5c713566127dc6890df9ce6c04f1fcf20f0338f8e5c6fe930b2d5500a486536bcb404b3'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -136,7 +136,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -162,7 +162,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
+  # config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -274,4 +274,6 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  config.secret_key = '477c8ea026568576a2e51fb835358c33eb055856393c5f3fba8adb0d8cb35dada3a5617b9869e5fd88f748920350509af53b6678006a7f3b72312ce69c849b0c'
 end

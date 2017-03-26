@@ -16,7 +16,8 @@
         <header class="page-header text-center">
           <h1><%= yield(:header) %></h1>
         </header>
-        ]
+        <%= render "shared/flash_message" %>
+        
         <%= yield %>
       </section><!-- #content -->
     </main><!-- #<%= controller.controller_name %>-<%= controller.action_name %> -->
