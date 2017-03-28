@@ -19,9 +19,11 @@ pt-BR:
           remember_me: "Manter-se conectado"
           password: 'Senha'
           password_confirmation: 'Confirmar Senha'
-          sign_up: "Registrar-se"
         edit:
           email: 'E-mail.'
+          password: 'Senha'
+          password_confirmation: 'Confirmar Senha'
+          current_password: "Senha atual"
     # hints:
     #   username: 'User name to sign in.'
     #   password: 'No special characters, please.'
