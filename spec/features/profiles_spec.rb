@@ -10,11 +10,11 @@ RSpec.feature "Profiles", type: :feature do
     end
 
     it 'Deve conter a imagem default para o usuário' do
-      expect(page).to have_css "img[src*='/default/default.jpg']"
+      expect(page).to have_css "img[src*='/fallback/default-avatar.jpg']"
     end
 
     it 'Deve conter a foto do usuário' do
-      expect(page).to have_css "img[src*='/users/#{user.id}/avatar.png']"
+      expect(page).to have_css "img[src*='#{user.avatar}']"
     end
 
     it 'Deve conter informções do usuário' do

@@ -20,27 +20,10 @@
 
   .panel-body #avatar {
     height: 20vw;
-    position: relative;
 
     img {
         height: 100%;
         width: 100%;
-    }
-
-    .user_avatar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-
-      input {
-        height: 100% !important;
-        width: 100% !important;
-        display: block !important;
-        opacity: 0 !important;
-        overflow: hidden !important;
-      }
     }
   }
 

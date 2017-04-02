@@ -1,0 +1,15 @@
+<li class="col-md-2 col-xs-12">
+  <%= simple_form_for @picture, html: { multipart: true }  do |f| %>
+    <div id="box-image-preview">
+      <div class="input-field image_preview">
+        <div class="box-image center">
+          <%= image_tag @picture.image.url, class: 'file_preview img-responsive' %>
+          <%= f.input :image, required: false, label: false, input_html: {id: 'image'} %>
+        </div>
+      </div>
+    </div>
+    <div class="text-box text-center">
+      <%= f.submit 'Cadastrar', class: 'btn btn-primary', id: "commit-picture" %>
+    </div>
+  <% end %>
+</li>

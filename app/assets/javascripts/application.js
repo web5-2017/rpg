@@ -16,6 +16,6 @@
 //= require turbolinks
 //= require_self
 //= require loads
-//= require users
+//= require lib/images
 
 window.APP = {}

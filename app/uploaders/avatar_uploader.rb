@@ -17,7 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*args)
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default-avatar.jpg"].compact.join('_'))
+    ActionController::Base.helpers.asset_path("fallback/user/" + [version_name, "default-avatar.jpg"].compact.join('_'))
   end
 
   def content_type_whitelist

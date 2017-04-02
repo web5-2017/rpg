@@ -1,0 +1,14 @@
+#pictures-index {
+  #commit-picture {
+      display: none;
+  }
+
+  #gallery {
+    list-style: none;
+
+    li {
+      display: inline;
+      height: 200px;
+    }
+  }
+}

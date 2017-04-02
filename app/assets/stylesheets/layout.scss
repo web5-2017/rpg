@@ -22,3 +22,27 @@ footer {
   clear:both;
   padding-top:20px;
 }
+
+/*****************************************************
+  image-preview file input
+*****************************************************/
+
+#box-image-preview {
+  position: relative;
+
+  .form-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #image {
+    height: 100% !important;
+    width: 100% !important;
+    display: block !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+  }
+}

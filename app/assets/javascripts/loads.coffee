@@ -1,2 +1,2 @@
 $(document).on 'turbolinks:load', ->
-  APP.imagePreview()
+  APP.image_preview()

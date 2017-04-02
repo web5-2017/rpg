@@ -1,3 +1,5 @@
+<% provide :title, 'Perfil' %>
+
 <div class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -15,7 +17,7 @@
             <div class="input-field image_preview">
               <div id="avatar" class="box-image center">
                 <%= image_tag current_user.avatar.url, class: 'file_preview active' %>
-                <%= f.input :avatar, required: false, label: false %>
+                <%= f.input :avatar, required: false, label: false, input_html: {id: 'image'} %>
               </div>
             </div>
             <div class="text-box text-center">
