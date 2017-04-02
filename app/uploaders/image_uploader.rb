@@ -2,9 +2,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
 
-  process resize_to_fit: [400, 200]
+  version :presentation do
+    process :resize_to_fit => [200, 200]
+  end
 
-  version :small do
+  version :mobile_presentation do
     process resize_to_fill: [100,100]
   end
 
