@@ -15,11 +15,11 @@ RSpec.feature "ImageUploads", type: :feature do
     end
 
     it 'deve adicionar uma picture' do
-      page.attach_file('file_upload', Rails.root + 'spec/images/perfil.jpg')
-      find("a[href='#{picture_path}']").click
+      page.attach_file('picture[image]', Rails.root + 'spec/images/perfil.jpg')
+      find("#commit-picture").click
 
-      lis = page.all('ul#pictures li').map(&:text)
-      lis.should include(1)
+      lis = page.all('ul#gallery li').map(&:text)
+      expect(lis.length).to eq 2
     end
   end
 end
