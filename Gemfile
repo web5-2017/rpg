@@ -11,6 +11,8 @@ gem 'jbuilder',       '2.4.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise',         '~> 4.2'
 gem 'simple_form',    '~> 3.4'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 
 group :development, :test do
   gem 'sqlite3',     '1.3.12'

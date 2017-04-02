@@ -13,12 +13,17 @@
       <%= render "layouts/navbar" %>
 
       <section id="content">
-        <header class="page-header text-center">
-          <h1><%= yield(:header) %></h1>
-        </header>
+        <% unless yield(:header).empty? %>
+          <header class="page-header text-center">
+            <h1><%= yield(:header) %></h1>
+          </header>
+        <% end %>
         <%= render "shared/flash_message" %>
-        
-        <%= yield %>
+
+        <div id="main-content">
+          <%= yield %>
+        </div><!-- #main-content -->
+
       </section><!-- #content -->
     </main><!-- #<%= controller.controller_name %>-<%= controller.action_name %> -->
 

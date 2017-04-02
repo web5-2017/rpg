@@ -15,3 +15,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_self
+//= require loads
+//= require users
+
+window.APP = {}

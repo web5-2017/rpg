@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div id="edit-btn">
+        <%= link_to "Editar", edit_user_registration_path, class: "btn btn-primary" %>
+      </div>
+
+      <h3>Perfil de <%= current_user.name %></h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <%= simple_form_for current_user, html: { multipart: true }  do |f| %>
+          <div id="box-image-preview" class="col-md-4 col-xs-12">
+            <div class="input-field image_preview">
+              <div id="avatar" class="box-image center">
+                <%= image_tag current_user.avatar.url, class: 'file_preview active' %>
+                <%= f.input :avatar, required: false, label: false %>
+              </div>
+            </div>
+            <div class="text-box text-center">
+              <%= f.submit 'Atualizar', class: 'btn btn-primary' %>
+              <p class="text-input">Clique na imagem para alterá-la</p>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="list-group col-md-8 col-xs-12">
+          <a href="#" class="list-group-item active">Dados da conta</a>
+          <a href="#" class="list-group-item">Nome: <%= current_user.name %></a>
+          <a href="#" class="list-group-item">Idade: <%= current_user.age %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
