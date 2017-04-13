@@ -3,10 +3,21 @@ require 'rails_helper'
 RSpec.feature "Profiles", type: :feature do
   let!(:user) {create(:user_actived)}
 
-  context "perfil do usuário (visualização)" do
+  context 'layout' do
     before do
       sign_in user.email, user.password
       visit '/profile'
+    end
+
+    it 'Deve ativar a link do sidebar' do
+      expect(page).to have_css "#sidebar a[href*='/profile'] li[class*='active']"
+    end
+  end
+
+  context "perfil do usuário (visualização)" do
+    before do
+      sign_in user.email, user.password
+      visit '/profile/edit'
     end
 
     it 'Deve conter a imagem default para o usuário' do
@@ -22,5 +33,4 @@ RSpec.feature "Profiles", type: :feature do
     end
 
   end
-
 end

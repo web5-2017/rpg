@@ -1,7 +1,10 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#profile-index {
+/*****************************************************
+  Page edit
+*****************************************************/
+#profile-edit {
   .panel-heading {
     position: relative;
     height: 80px;
@@ -27,9 +30,46 @@
     }
   }
 
+  //                        //
+  //  Preview image profile //
+  //                        //
   #box-image-preview .btn {
     display: none;
     margin-left: 37.2226199%; //130 * 100 /349.25
     margin-top: 10px;
+  }
+}
+/*****************************************************
+  Layout
+*****************************************************/
+//                        //
+//  sidebar               //
+//                        //]
+#box-sidebar:hover {
+  overflow-y: hidden;
+}
+
+#box-sidebar:hover {
+  border-right: 1px solid #b0bec5;
+  overflow-y: auto;
+}
+
+#sidebar {
+  list-style: none;
+  padding: 0;
+
+  a { color: #212121 }
+  a:hover { text-decoration: none;}
+
+  li {
+    padding: 15px 20px;;
+  }
+
+  li:hover {
+    background-color: #cfd8dc;
+  }
+
+  li.active {
+    background-color: #b0bec5;
   }
 }

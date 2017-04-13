@@ -13,4 +13,12 @@ module ApplicationHelper
   def bootstrap_icon_for flash_type
      { success: "ok-circle", error: "remove-circle", alert: "warning-sign", notice: "exclamation-sign" }[flash_type] || "question-sign"
   end
+
+  def li_active(body, url)
+    if /^#{url}$/.match(request.fullpath)
+      "<li class='active'>#{body}</li>".html_safe
+    else
+      "<li>#{body}</li>".html_safe
+    end
+  end
 end

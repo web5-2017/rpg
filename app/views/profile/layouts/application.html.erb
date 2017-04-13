@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+  </head>
+  <body>
+
+    <main id="<%= controller.controller_name %>-<%= controller.action_name %>">
+      <%= render "layouts/navbar" %>
+
+      <section id="content" class="container-fluid">
+        <div class="row">
+          <div id="box-sidebar" class="col-xs-2">
+            <%= render 'profile/layouts/sidebar' %>
+          </div>
+
+          <div class="col-xs-10">
+            <% unless yield(:header).empty? %>
+              <header class="page-header text-center">
+                <h1><%= yield(:header) %></h1>
+              </header>
+            <% end %>
+
+            <%= render "shared/flash_message" %>
+
+            <div id="main-content">
+              <%= yield %>
+            </div><!-- #main-content -->
+          </div>
+        </div>
+      </section><!-- #content -->
+    </main><!-- #<%= controller.controller_name %>-<%= controller.action_name %> -->
+
+    <%= render "layouts/footer" %>
+  </body>
+</html>

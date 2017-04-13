@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   ################################ Rotas para o usuário###############################
   get '/profile', to: 'profile#index'
+  get '/profile/edit', to: 'profile#edit'
+  
   resources :users, only: :update
 
   ################################ Rotas para upload de images ###############################

@@ -1,4 +1,3 @@
 class ProfileController < ApplicationController
-  def index
-  end
+  layout '/profile/layouts/application'
 end
