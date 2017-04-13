@@ -2,7 +2,9 @@ pt-BR:
   hello: "Ola Mundo"
   activerecord:
     models:
-
+        user:
+          one: 'Usuário'
+          other: 'Usuários'
     attributes:
       user:
         name: "Nome"
