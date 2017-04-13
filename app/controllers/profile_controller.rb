@@ -1,3 +1,3 @@
 class ProfileController < ApplicationController
-  layout '/profile/layouts/application'
+  layout '/layouts/profile/application'
 end

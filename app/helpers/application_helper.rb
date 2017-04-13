@@ -14,7 +14,9 @@ module ApplicationHelper
      { success: "ok-circle", error: "remove-circle", alert: "warning-sign", notice: "exclamation-sign" }[flash_type] || "question-sign"
   end
 
-  def li_active(body, url)
+  def li_active(body = nil, url)
+    body = yield unless body
+
     if /^#{url}$/.match(request.fullpath)
       "<li class='active'>#{body}</li>".html_safe
     else

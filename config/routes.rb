@@ -8,11 +8,16 @@ Rails.application.routes.draw do
   ################################ Rotas para o usuário###############################
   get '/profile', to: 'profile#index'
   get '/profile/edit', to: 'profile#edit'
-  
+
   resources :users, only: :update
 
   ################################ Rotas para upload de images ###############################
   resources :pictures, only: [:index, :create]
+
+  ################################ Rotas para partidas ###############################
+  namespace :game do
+    resources :games, only: [:new], as: ''
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

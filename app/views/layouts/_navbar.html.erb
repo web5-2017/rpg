@@ -13,9 +13,13 @@
             <%= link_to 'Login', new_user_session_path %>
           </li>
         <% else %>
-          <li>
-            <%= link_to 'Imagens', pictures_path %>
-          </li>
+          <%= li_active profile_path do %>
+            <% link_to 'Perfil', profile_path %>
+          <% end %>
+          <%= li_active pictures_path do %>
+            <% link_to('Imagens', pictures_path) %>
+          <% end %>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= current_user.name %>
