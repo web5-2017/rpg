@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :pictures, only: [:index, :create]
 
   ################################ Rotas para partidas ###############################
-  namespace :game do
-    resources :games, only: [:new], as: ''
+  namespace :match do
+    resources :games, only: [:show, :new, :create]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

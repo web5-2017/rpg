@@ -1,9 +1,9 @@
-<ul id="sidebar">
-  <%= link_to profile_path do  %>
-    <%= li_active "Perfil", profile_path %>
+<ul id="sidebar" class="nav nav-pills nav-stacked">
+  <%= li_active profile_path do %>
+    <% link_to 'Perfil', profile_path %>
   <% end %>
 
-  <%= link_to new_game_path do  %>
-    <%= li_active "Nova Partida", new_game_path %>
+  <%= li_active new_match_game_path do %>
+    <% link_to "Nova Partida", new_match_game_path %>
   <% end %>
 </ul>

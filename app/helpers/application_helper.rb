@@ -18,9 +18,9 @@ module ApplicationHelper
     body = yield unless body
 
     if /^#{url}$/.match(request.fullpath)
-      "<li class='active'>#{body}</li>".html_safe
+      "<li role='presentation' class='active'>#{body}</li>".html_safe
     else
-      "<li>#{body}</li>".html_safe
+      "<li role='presentation'>#{body}</li>".html_safe
     end
   end
 end

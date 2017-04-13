@@ -5,6 +5,9 @@ pt-BR:
         user:
           one: 'Usuário'
           other: 'Usuários'
+        game:
+          one: 'Partida'
+          other: 'Partidas'
     attributes:
       user:
         name: "Nome"
