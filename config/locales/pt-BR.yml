@@ -8,8 +8,14 @@ pt-BR:
         game:
           one: 'Partida'
           other: 'Partidas'
+        history:
+          one: 'História'
+          other: 'Histórias'
     attributes:
       user:
         name: "Nome"
         email: "E-mail"
         password: "Senha"
+      history:
+        title: "Título"
+        content: 'Conteúdo'

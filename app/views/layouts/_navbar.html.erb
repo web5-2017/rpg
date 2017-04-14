@@ -8,14 +8,23 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+
+        <%= li_active histories_path do %>
+          <% link_to 'Histórias', histories_path %>
+        <% end %>
+
         <% unless user_signed_in? %>
-          <li>
-            <%= link_to 'Login', new_user_session_path %>
-          </li>
+
+          <%= li_active new_user_session_path do %>
+            <% link_to 'Login', new_user_session_path %>
+          <% end %>
+
         <% else %>
+
           <%= li_active profile_path do %>
             <% link_to 'Perfil', profile_path %>
           <% end %>
+
           <%= li_active pictures_path do %>
             <% link_to('Imagens', pictures_path) %>
           <% end %>

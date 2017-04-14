@@ -14,6 +14,7 @@ gem 'simple_form',    '~> 3.4'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
+gem 'bootsy'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.12'

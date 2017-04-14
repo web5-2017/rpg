@@ -27,6 +27,6 @@
       </section><!-- #content -->
     </main><!-- #<%= controller.controller_name %>-<%= controller.action_name %> -->
 
-    <%= render "layouts/footer" %>
+    <%= render "layouts/footer" unless controller.is_a? Match::AppMatchController %>
   </body>
 </html>

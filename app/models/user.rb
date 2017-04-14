@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_many :games
   has_and_belongs_to_many :games_playing, class_name: 'Game'
+  has_many :histories
 end

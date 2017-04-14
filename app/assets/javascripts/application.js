@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require bootsy
 //= require_self
 //= require loads
 //= require lib/images
+//= require match/histories
 
 window.APP = {}

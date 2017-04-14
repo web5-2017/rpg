@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def update
     if current_user.id == params[:id].to_i
       if current_user.update params.require(:user).permit(:avatar)
