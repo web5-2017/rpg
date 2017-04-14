@@ -1,23 +1,15 @@
-<% provide(:header, "Partida #{@game.name}") %>
-
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Histórias</a></li>
-</ul>
-
-<section id="tab-content">
+<section>
 
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
-      <h4 class="pull-left">Histórias</h4>
-      <%= link_to "Adicionar uma Historia", match_game_histories_path(@game), 
-          class: "btn btn-primary pull-right" %>
+      <h4 class="text-center">Histórias</h4>
     </div>
 
     <div class="panel-body">
       <table id="table-histories" class="table table-hover">
         <thead>
           <tr>
-            <th>Nome</th>
+            <th>Titulo</th>
             <th>Criador</th>
             <th></th>
           </tr>

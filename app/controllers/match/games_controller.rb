@@ -6,7 +6,7 @@ class Match::GamesController < Match::AppMatchController
 
   def show
     @game = current_user.games.find params[:id]
-    @histories = @game.histories.order :name
+    @histories = @game.histories.order :title
   end
 
   def new
@@ -23,6 +23,24 @@ class Match::GamesController < Match::AppMatchController
       flash.now[:error] = "erro ao criar a partida"
       render :new
     end
+  end
+
+  def add_history
+    history = History.find params[:history_id]
+    game = current_user.games.find params[:game_id]
+    game.histories << history
+
+    flash[:success] = "#{history.title} adicionada a partida"
+    redirect_to match_game_histories_path(game)
+  end
+
+  def remove_history
+    history = History.find params[:history_id]
+    game = current_user.games.find params[:game_id]
+    game.histories.destroy(history)
+
+    flash[:success] = "#{history.title} removida da partida"
+    redirect_to [:match, game]
   end
 
   private

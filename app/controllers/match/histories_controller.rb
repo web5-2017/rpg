@@ -1,5 +1,8 @@
 class Match::HistoriesController < Match::AppMatchController
-  layout '/layouts/application'
+  def index
+    @game = current_user.games.find params[:game_id]
+    @histories = History.order :title
+  end
 
   def show
     @history = History.find params[:id]
