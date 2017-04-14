@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   ################################ Rotas para partidas ###############################
   namespace :match do
-    resources :games, only: [:show, :new, :create]
+    resources :games, only: [:index, :show, :new, :create]
+    ################################ Rotas para historias ###############################
+
+    resources :histories, only: [:new]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,25 @@
+<% provide(:header, "Partida #{@game.name}") %>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Historias</a></li>
+</ul>
+
+<section id="tab-content">
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table id="table-histories" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Criador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @histories %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>

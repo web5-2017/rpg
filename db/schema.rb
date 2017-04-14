@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413183914) do
+ActiveRecord::Schema.define(version: 20170414202943) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -18,6 +18,27 @@ ActiveRecord::Schema.define(version: 20170413183914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "games_histories", id: false, force: :cascade do |t|
+    t.integer "game_id",    null: false
+    t.integer "history_id", null: false
+    t.index ["game_id", "history_id"], name: "index_games_histories_on_game_id_and_history_id", unique: true
+  end
+
+  create_table "games_users", id: false, force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
+    t.index ["game_id", "user_id"], name: "index_games_users_on_game_id_and_user_id", unique: true
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "pictures", force: :cascade do |t|

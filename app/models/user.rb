@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :games
-  has_and_belongs_to_many :games_playing, class_name: 'game'
+  has_and_belongs_to_many :games_playing, class_name: 'Game'
 end

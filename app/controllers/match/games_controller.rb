@@ -1,6 +1,12 @@
 class Match::GamesController < Match::AppMatchController
 
+  def index
+    @games = current_user.games.order :name
+  end
+
   def show
+    @game = current_user.games.find params[:id]
+    @histories = @game.histories.order :name
   end
 
   def new

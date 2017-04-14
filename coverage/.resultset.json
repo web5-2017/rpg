@@ -1,22 +1,130 @@
 {
   "RSpec": {
     "coverage": {
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/spec/factories/games.rb": [
+        null,
+        1,
+        1,
+        3,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/spec/factories/histories.rb": [
+        1,
+        1,
+        11,
+        1,
+        null,
+        null
+      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/spec/factories/users.rb": [
         null,
         1,
         1,
-        1,
-        1,
-        1,
-        1,
+        3,
+        3,
+        3,
+        3,
         null,
         1,
         1,
         null,
         null,
         null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/game.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/history.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        2,
+        null,
+        null,
+        1,
+        4,
+        0,
+        null,
+        null,
+        4,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/games_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/app_match_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1492112605
+    "timestamp": 1492203138
   }
 }
