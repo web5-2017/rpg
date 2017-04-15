@@ -1,18 +1,1 @@
-<div class="container">
-  <%= simple_form_for [:match, @history] do |f| %>
-    <div class="row">
-
-      <div class="col-md-5 col-md-push-3 col-xs-9 page-header">
-        <%= f.input :title %>
-      </div>
-
-      <div class="col-xs-3 col-md-push-3">
-        <%= link_to "Voltar", :back, class: "btn btn-default" %>
-      </div>
-    </div>
-
-    <%= f.input :content, as: :bootsy, label: false, input_html: { rows: 20 } %>
-
-    <%= f.submit class: 'btn btn-primary' %>
-  <% end %>
-</div>
+<%= render 'form' %>
