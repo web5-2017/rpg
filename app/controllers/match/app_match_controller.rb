@@ -7,7 +7,8 @@ class Match::AppMatchController < ::ActionController::Base
   protected
 
   def layout_feature
-    return '/layouts/application' if self.is_a? Match::HistoriesController and action_name != 'index'
+    return '/layouts/application' if self.is_a? Match::HistoriesController and
+                                                !action_for_layout.include?(action_name)
 
     '/layouts/profile/application'
   end

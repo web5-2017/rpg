@@ -55,4 +55,35 @@ RSpec.feature "Games", type: :feature do
       end
     end
   end
+
+  describe 'Editando uma partida' do
+    let(:game) { create(:game, user: user) }
+
+    before do
+      visit "/match/games/#{game.id}/edit"
+
+      within("#edit_game_#{game.id}") do
+        fill_in 'game[name]', with: 'test'
+      end
+      find('input[name="commit"]').click
+    end
+
+    it 'Deve modificar a partida' do
+      expect(game.reload.name).to eq 'test'
+    end
+  end
+
+  describe 'Excluir uma partida' do
+    let(:game) { create(:game, user: user) }
+
+    before do
+      visit "/match/games"
+
+      find('a[data-method="delete"]').click
+    end
+
+    it 'Deve excluir a partida' do
+      expect(Game.count).to eq 0
+    end
+  end
 end

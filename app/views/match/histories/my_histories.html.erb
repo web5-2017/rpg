@@ -1,14 +1,17 @@
+<% provide(:header, "Minhas histórias") %>
+
 <div class="panel panel-default">
   <div class="panel-body">
-    <table class="table table-hover">
+    <table id="table-histories" class="table table-hover">
       <thead>
         <tr>
-          <th>Nome</th>
+          <th>Titulo</th>
+          <th>Criador</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <%= render @games %>
+        <%= render @histories %>
       </tbody>
     </table>
   </div>

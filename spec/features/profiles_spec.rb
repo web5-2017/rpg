@@ -10,7 +10,7 @@ RSpec.feature "Profiles", type: :feature do
     end
 
     it 'Deve ativar a link do sidebar' do
-      expect(page).to have_css "#sidebar a[href*='/profile'] li[class*='active']"
+      expect(page).to have_css "#sidebar li[class*='active'] a[href*='/profile']"
     end
   end
 
