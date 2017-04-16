@@ -18,6 +18,9 @@
 //= require_self
 //= require loads
 //= require lib/images
+//= require lib/maps/map
+//= require lib/maps/table
 //= require match/histories
+//= require match/maps
 
 window.APP = {}

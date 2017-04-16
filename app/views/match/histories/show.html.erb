@@ -1,1 +1,14 @@
-<%= render 'show_history' %>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active">
+    <a href="#">História</a>
+  </li>
+  <li role="presentation" id="maps">
+    <%= link_to 'Mapas', match_history_maps_path(@history), remote: true %>
+  </li>
+</ul>
+
+<section id="tab-content">
+
+  <%= render 'show_history' %>
+
+</section>

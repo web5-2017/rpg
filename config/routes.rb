@@ -22,15 +22,19 @@ Rails.application.routes.draw do
   ################################ Rotas para partidas ###############################
   namespace :match do
     resources :games do
-      resources :histories, only: [:index] do
+      resources :histories, only: :index do
         get '/add_history', to: 'games#add_history'
         delete '/remove_history', to: 'games#remove_history'
       end
     end
-    ################################ Rotas para historias ###############################
 
-    resources :histories, except: :index
+    ################################ Rotas para historias ###############################
     get '/my-histories', to: 'histories#my_histories'
+    resources :histories, except: :index do
+
+      ################################ Rotas para Mapas ###############################
+      resources :maps, only: [:index, :new]
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

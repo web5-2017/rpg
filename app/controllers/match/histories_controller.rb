@@ -56,11 +56,6 @@ class Match::HistoriesController < Match::AppMatchController
     end
   end
 
-  protected
-  def action_for_layout
-    ['index', 'my_histories']
-  end
-
   private
 
   def history_params
