@@ -16,8 +16,22 @@ class APP.Map
   process_cells: ->
     for component in @map
       for cell in component.cells
-        console.log(cell)
         $("##{@tableId}-#{cell}").css("background-color", component.color)
+
+  cell_component_empty: (cellComponent, index) ->
+    for component in @map
+      if component.name != @map[index].name
+        for cell in component.cells
+          if cell == cellComponent
+            return false
+
+    return true
+
+  add_cell_component: (cell, component) ->
+    $("##{@tableId}-#{cell}").css("background-color", component.color)
+
+  remove_cell_component: (cell) ->
+    $("##{@tableId}-#{cell}").css("background-color", "transparent")
 
   buildMat: ->
     @rows += 1

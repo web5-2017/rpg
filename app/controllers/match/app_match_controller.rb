@@ -14,6 +14,6 @@ class Match::AppMatchController < ::ActionController::Base
   end
 
   def action_for_layout
-    ['histories#new', 'histories#edit', 'histories#show', 'maps#new']
+    ['histories#new', 'histories#edit', 'histories#show', 'maps#new', 'maps#edit']
   end
 end

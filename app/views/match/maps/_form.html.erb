@@ -1,4 +1,4 @@
-<%= simple_form_for [:match, @history, @map], :remote => true do |f| %>
+<%= simple_form_for [:match, @history, @map] do |f| %>
   <%= f.input :json_map, as: :hidden %>
 
   <div class="row">
@@ -26,5 +26,6 @@
 
   <div id="components" data-component=""></div>
   <div id="active-component"></div>
-  <%= f.submit 'Salvar Mapa' , class: 'btn btn-primary' %>
+  </br>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

@@ -29,34 +29,56 @@ APP.factory_map = ->
   factory_add_components(json, json_map)
   factory_component(json, json_map)
   factory_cells_component(json, json_map)
+  remove_component(json, json_map)
 
   APP.render_map()
 
 factory_add_components = (json, json_map) ->
+  for component in json.map
+    $('#components').append(
+            "<p class='component clearfix' data-name=\"#{component.name}\" style='background-color: #{component.color};'>
+                #{component.name}
+                <span class='btn btn-default pull-right'>X</span>
+            </p>")
+
   $('#new-components button').click ->
     name = $('#component_name').val()
     color = $('#component_color').val()
+    index = get_index_component(json, name, color)
 
-    json.map.push(
-      {
-        name: name
-        color: color
-        cells: []
-      }
-    )
-    json_map.val(JSON.stringify(json))
+    unless index != null
+      json.map.push(
+        {
+          name: name
+          color: color
+          cells: []
+        }
+      )
+      json_map.val(JSON.stringify(json))
 
-    $('#components').append("<p class='component' style='background-color: #{color};'>#{name}</p>")
+      $('#components').append(
+                      "<p class='component clearfix' data-name=\"#{component.name}\" style='background-color: #{color};'>
+                          #{name}
+                          <span class='btn btn-default pull-right'>X</span>
+                      </p>")
+
+get_index_component = (json, name, color = null)->
+  index = 0
+  for component in json.map
+    if component.name.toLowerCase() == name.toLowerCase()
+      return index
+
+    if index and component.color == color
+      return index
+
+    index++
+
+  index = null
 
 factory_component = (json) ->
   $('.form-map-box').on 'click', '.component', ->
-    name = $(@).text()
-    index = 0
-    for component in json.map
-      if component.name == name
-        break
-      else
-        index++
+    name = $(@).data('name')
+    index = get_index_component(json, name)
 
     $('.component').css 'border', '1px solid black'
     $(@).css 'border', '5px solid black'
@@ -70,21 +92,16 @@ factory_cells_component = (json, json_map) ->
     index = parseInt($('#active-component').html())
     cells = json.map[index].cells
 
-    if cells.indexOf($(@).text()) == -1
-      cells.push($(@).text())
-    else
-      if ( cells.indexOf($(@).text()) == 0 )
-        cells = cells.slice(1, cells.length)
-      else if ( cells.indexOf($(@).text()) == cells.length - 1 )
-        cells.pop()
+    if map.cell_component_empty($(@).text(), index)
+      if cells.indexOf($(@).text()) == -1
+        cells.push($(@).text())
+        map.add_cell_component($(@).text(), json.map[index])
       else
-        array1 = cells.slice(0, cells.indexOf($(@).text()))
-        array2 = cells.slice(cells.indexOf($(@).text()) + 1, cells.length)
-        cells = array1.concat(array2)
+        map.remove_cell_component($(@).text())
+        cells = remove_array(cells, cells.indexOf($(@).text()))
 
-    json.map[index].cells = cells
-    json_map.val(JSON.stringify(json))
-    map.process_cells()
+      json.map[index].cells = cells
+      json_map.val(JSON.stringify(json))
 
 factory_rows_collumns = (json, json_map)->
     $('#map_rows').focusout ->
@@ -96,3 +113,23 @@ factory_rows_collumns = (json, json_map)->
       json.columns = parseInt($(@).val())
       json_map.val(JSON.stringify(json))
       APP.render_map()
+
+remove_component = (json, json_map) ->
+  $('.form-map-box').on 'click', '.component .btn', ->
+    index = get_index_component(json, $(@).parent().data('name'))
+    json.map = remove_array(json.map, index)
+    $(@).parent().css('display', 'none')
+    json_map.val(JSON.stringify(json))
+    APP.render_map()
+
+
+remove_array = (array, index) ->
+  if ( index == 0 )
+    return array.slice(1, array.length)
+  if ( index == array.length - 1 )
+    array.pop()
+    return array
+
+  array1 = array.slice(0, index)
+  array2 = array.slice(index + 1, array.length)
+  return array1.concat(array2)

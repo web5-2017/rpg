@@ -5,4 +5,12 @@
       <%= link_to 'Novo Mapa', new_match_history_map_path(@history), class: 'btn btn-primary' %>
     </div>
   </header>
+
+  <div class="">
+    <ul>
+      <% @maps.each do |map| %>
+        <li><%= link_to map.id, edit_match_history_map_path(@history, map) %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

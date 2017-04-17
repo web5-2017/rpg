@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :histories, except: :index do
 
       ################################ Rotas para Mapas ###############################
-      resources :maps, only: [:index, :new, :create, :update]
+      resources :maps, only: [:index, :new, :create, :update, :edit]
     end
   end
 
