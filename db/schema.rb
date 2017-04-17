@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416195523) do
+ActiveRecord::Schema.define(version: 20170417190538) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.string   "bootsy_resource_type"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170416195523) do
     t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "breeds", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "history_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["history_id"], name: "index_breeds_on_history_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -67,6 +76,13 @@ ActiveRecord::Schema.define(version: 20170416195523) do
 
   create_table "pictures", force: :cascade do |t|
     t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

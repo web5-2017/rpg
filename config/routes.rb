@@ -34,6 +34,9 @@ Rails.application.routes.draw do
 
       ################################ Rotas para Mapas ###############################
       resources :maps, only: [:index, :new, :create, :update, :edit]
+
+      ################################ Rotas para Mapas ###############################
+      resources :breeds
     end
   end
 
