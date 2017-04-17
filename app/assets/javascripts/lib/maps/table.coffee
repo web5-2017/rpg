@@ -26,7 +26,10 @@ class APP.Table
     for i in [1..@rows - 1]
       row = '<tr>'
       for j in [0..@columns - 1]
-        row += "<td id=\"#{@id}-#{@mat[i][j]}\">#{@mat[i][j]}</td>"
+        if j == 0
+          row += "<td id=\"#{@id}-#{@mat[i][j]}\">#{@mat[i][j]}</td>"
+        else
+          row += "<td id=\"#{@id}-#{@mat[i][j]}\" class=\"map-field\">#{@mat[i][j]}</td>" 
       row += '</tr>'
       @contact row
 
