@@ -13,25 +13,26 @@ APP.render_map = ->
 APP.factory_map = ->
   json_map = $('#map_json_map')
 
-  unless json_map.val().length == 0
-    json = JSON.parse(json_map.val())
-  else
-    json =
-      tableId: 'new-map'
-      rows: 15
-      columns: 18
-      map: []
-    $('#map_rows').val(15)
-    $('#map_columns').val(18)
-    json_map.val(JSON.stringify(json))
+  unless json_map.length == 0
+    unless (json_map.val() == '')
+      json = JSON.parse(json_map.val())
+    else
+      json =
+        tableId: 'new-map'
+        rows: 15
+        columns: 18
+        map: []
+      $('#map_rows').val(15)
+      $('#map_columns').val(18)
+      json_map.val(JSON.stringify(json))
 
-  factory_rows_collumns(json, json_map)
-  factory_add_components(json, json_map)
-  factory_component(json, json_map)
-  factory_cells_component(json, json_map)
-  remove_component(json, json_map)
+    factory_rows_collumns(json, json_map)
+    factory_add_components(json, json_map)
+    factory_component(json, json_map)
+    factory_cells_component(json, json_map)
+    remove_component(json, json_map)
 
-  APP.render_map()
+    APP.render_map()
 
 factory_add_components = (json, json_map) ->
   for component in json.map
@@ -57,7 +58,7 @@ factory_add_components = (json, json_map) ->
       json_map.val(JSON.stringify(json))
 
       $('#components').append(
-                      "<p class='component clearfix' data-name=\"#{component.name}\" style='background-color: #{color};'>
+                      "<p class='component clearfix' data-name=\"#{name}\" style='background-color: #{color};'>
                           #{name}
                           <span class='btn btn-default pull-right'>X</span>
                       </p>")
@@ -90,18 +91,19 @@ factory_cells_component = (json, json_map) ->
 
   $('.map-box').on 'click', '.map-field', ->
     index = parseInt($('#active-component').html())
-    cells = json.map[index].cells
+    unless isNaN(index)
+      cells = json.map[index].cells
 
-    if map.cell_component_empty($(@).text(), index)
-      if cells.indexOf($(@).text()) == -1
-        cells.push($(@).text())
-        map.add_cell_component($(@).text(), json.map[index])
-      else
-        map.remove_cell_component($(@).text())
-        cells = remove_array(cells, cells.indexOf($(@).text()))
+      if map.cell_component_empty($(@).text(), index)
+        if cells.indexOf($(@).text()) == -1
+          cells.push($(@).text())
+          map.add_cell_component($(@).text(), json.map[index])
+        else
+          map.remove_cell_component($(@).text())
+          cells = remove_array(cells, cells.indexOf($(@).text()))
 
-      json.map[index].cells = cells
-      json_map.val(JSON.stringify(json))
+        json.map[index].cells = cells
+        json_map.val(JSON.stringify(json))
 
 factory_rows_collumns = (json, json_map)->
     $('#map_rows').focusout ->

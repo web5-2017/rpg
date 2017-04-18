@@ -1,0 +1,10 @@
+<input type="hidden" id="json_map" value="<%= @map.json_map %>">
+
+<div class="page-header text-center clearfix">
+  <h1><%= @map.name %></h1>
+  <%= link_to "Voltar", :back, class: "btn btn-default pull-right" %>
+</div>
+
+<div class="container-fluid">
+  <div class="map-box" data-map="#json_map"></div>
+</div>

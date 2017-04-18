@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header text-center">
+  <h1><%= @breed.name %></h1>
+</div>
 
 <p>
-  <strong>Name:</strong>
-  <%= @breed.name %>
+  <strong>Descrição:</strong>
+  <p><%= @breed.description %></p>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @breed.description %>
-</p>
-
-<%= link_to 'Edit', edit_breed_path(@breed) %> |
-<%= link_to 'Back', breeds_path %>
+<%= link_to 'Editar', edit_match_history_breed_path(@breed), class: 'btn btn-primary' %>
+<%= link_to 'Back', [:match, @history], class: 'btn btn-default' %>

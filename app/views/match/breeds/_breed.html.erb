@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to breed.name, [:match, @history, breed] %></td>
+  <td>
+    <%= link_to 'Editar', edit_match_history_breed_path(@history, breed),
+                        class: 'btn btn-primary' %>
+    <%= link_to 'Deletar', [:match, @history, breed],
+                method: :delete, data: { confirm: 'Tem certeza?' },
+                class: 'btn btn-danger' %>
+  </td>
+</tr>

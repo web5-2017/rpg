@@ -15,7 +15,7 @@ class Match::BreedsController < Match::AppMatchController
 
     if @breed.save
       flash[:success] = "raça criada"
-      redirect_to [:match, @breed]
+      redirect_to [:match, @history, @breed]
     else
       flash[:error] = "erro ao criar a raça"
       render :new
@@ -25,7 +25,7 @@ class Match::BreedsController < Match::AppMatchController
   def update
     if @breed.update(breed_params)
       flash[:success] = "raça atualizada"
-      redirect_to [:match, @breed]
+      redirect_to [:match, @history, @breed]
     else
       flash[:success] = "erro ao atualizar a raça"
       render :edit
@@ -35,7 +35,7 @@ class Match::BreedsController < Match::AppMatchController
   def destroy
     @breed.destroy
     flash[:success] = "Raça apagada"
-    redirect_to match_history_breeds_path(@history, @breed)
+    redirect_to [:match, @history]
   end
 
   private

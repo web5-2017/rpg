@@ -1,5 +1,6 @@
 class Match::MapsController < Match::AppMatchController
   before_action :find_history
+  before_action :find_map, only: [:show, :edit, :update, :destroy]
 
   def index
     @maps = @history.maps.all
@@ -9,17 +10,13 @@ class Match::MapsController < Match::AppMatchController
     @map = @history.maps.new
   end
 
-  def edit
-    @map = @history.maps.find params[:id]
-  end
-
   def create
     @map = @history.maps.new map_params
 
     if @map.save
       @map.update_id_json
       flash.now[:success] = 'Mapa salvado'
-      redirect_to edit_match_history_map_path @history, @map
+      redirect_to [:match, @history, @map]
     else
       falsh.now[:error] = 'Erro ao salvar o mapa'
       render :new
@@ -27,20 +24,28 @@ class Match::MapsController < Match::AppMatchController
   end
 
   def update
-    @map = @history.maps.find params[:id]
-
     if @map.update map_params
       flash.now[:success] = 'Mapa salvado'
-      redirect_to edit_match_history_map_path @history, @map
+      redirect_to [:match, @history, @map]
     else
       falsh.now[:error] = 'Erro ao salvar o mapa'
       render :edit
     end
   end
 
+  def destroy
+    @map.destroy
+    flash.now[:success] = 'Mapa deletado'
+    redirect_to [:match, @history]
+  end
+
   private
   def map_params
-    params.require(:map).permit(:json_map, :rows, :columns)
+    params.require(:map).permit(:name, :json_map, :rows, :columns)
+  end
+
+  def find_map
+    @map = @history.maps.find params[:id]
   end
 
   def find_history

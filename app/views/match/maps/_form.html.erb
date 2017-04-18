@@ -1,5 +1,6 @@
 <%= simple_form_for [:match, @history, @map] do |f| %>
   <%= f.input :json_map, as: :hidden %>
+  <%= f.input :name, autofocus: true %>
 
   <div class="row">
     <div class="col-xs-6">
@@ -14,18 +15,19 @@
   <div id="new-components">
     <div class="form-group">
       <label for="component_name">Nome do Componente</label>
-      <input type="text" class="form-control" id="component_name">
+      <input type="text" name="component_name" class="form-control" id="component_name">
     </div>
     <div class="form-group">
       <label for="component_color">Cor do Componente</label>
-      <input type="text" class="minicolors" id="component_color">
+      <input type="text" name="component_color" class="minicolors" id="component_color">
     </div>
 
-    <button type="button" name="button" class="btn btn-default">Adicionar componente</button>
+    <button type="button" name="add_component" class="btn btn-default">Adicionar componente</button>
   </div>
 
   <div id="components" data-component=""></div>
   <div id="active-component"></div>
-  </br>
+  <div class="divider"></div>
   <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to "Voltar", :back, class: "btn btn-default" %>
 <% end %>

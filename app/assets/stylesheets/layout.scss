@@ -14,6 +14,10 @@ main {
   padding-bottom: 50px; /* this needs to be bigger than footer height*/
 }
 
+.profile #content, .no-footer #content {
+  padding-bottom: 0;
+}
+
 footer {
   position: relative;
   margin-top: -50px; /* negative value of footer height */
@@ -45,4 +49,12 @@ footer {
     opacity: 0 !important;
     overflow: hidden !important;
   }
+}
+/*****************************************************
+  Layouts
+*****************************************************/
+.divider {
+  width: 100%;
+  border-bottom: 1px solid black;
+  margin: 20px 0;
 }

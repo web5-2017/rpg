@@ -5,13 +5,15 @@ class APP.Map
     @columns = json.columns
     @map = json.map
     @tableId = json.tableId
-    console.log(json)
 
   render: (map_box) ->
     @buildMat()
     @tableTemplate = new APP.Table(@mat, @rows, @columns, @tableId)
     $(map_box).html(@tableTemplate.render())
     @process_cells()
+
+  stringify: ->
+    JSON.stringify(@)
 
   process_cells: ->
     for component in @map

@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170417190538) do
   end
 
   create_table "maps", force: :cascade do |t|
+    t.string   "name"
     t.text     "json_map"
     t.integer  "rows"
     t.integer  "columns"

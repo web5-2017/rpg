@@ -7,7 +7,6 @@ class History < ApplicationRecord
   belongs_to :user
 
   def destroy
-    puts self.games.empty?
     if self.games.empty?
       super
       return true

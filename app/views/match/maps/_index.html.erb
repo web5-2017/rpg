@@ -1,16 +1,24 @@
-<div class="container">
-  <header class="page-header text-center clearfix">
-    <h3>Mapas</h3>
-    <div class="pull-right">
-      <%= link_to 'Novo Mapa', new_match_history_map_path(@history), class: 'btn btn-primary' %>
-    </div>
-  </header>
 
-  <div class="">
-    <ul>
-      <% @maps.each do |map| %>
-        <li><%= link_to map.id, edit_match_history_map_path(@history, map) %></li>
-      <% end %>
-    </ul>
+<header class="page-header text-center clearfix">
+  <h3>Mapas</h3>
+  <div class="pull-right">
+    <%= link_to 'Novo Mapa', new_match_history_map_path(@history), class: 'btn btn-primary' %>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col-md-9 col-md-push-1">
+    <table id="table-histories" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tamanho</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @maps %>
+      </tbody>
+    </table>
   </div>
 </div>

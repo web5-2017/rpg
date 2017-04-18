@@ -1,29 +1,22 @@
-<p id="notice"><%= notice %></p>
+<header class="page-header text-center clearfix">
+  <h3>Raças</h3>
+  <div class="pull-right">
+    <%= link_to 'Nova raça', new_match_history_breed_path(@history), class: 'btn btn-primary' %>
+  </div>
+</header>
 
-<h1>Breeds</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @breeds.each do |breed| %>
-      <tr>
-        <td><%= breed.name %></td>
-        <td><%= breed.description %></td>
-        <td><%= link_to 'Show', [:match, @history, breed] %></td>
-        <td><%= link_to 'Edit', edit_match_history_breed_path(@history, breed) %></td>
-        <td><%= link_to 'Destroy', [:match, @history, breed], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Breed', new_match_history_breed_path(@history) %>
+<div class="row">
+  <div class="col-md-9 col-md-push-1">
+    <table id="table-histories" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @breeds %>
+      </tbody>
+    </table>
+  </div>
+</div>
