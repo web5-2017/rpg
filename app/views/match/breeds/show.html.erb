@@ -7,5 +7,14 @@
   <p><%= @breed.description %></p>
 </p>
 
-<%= link_to 'Editar', edit_match_history_breed_path(@breed), class: 'btn btn-primary' %>
-<%= link_to 'Back', [:match, @history], class: 'btn btn-default' %>
+<p>
+  <strong>Caracteristicas:</strong>
+  <ul>
+    <% @breed.particulars.each do |particular| %>
+      <li><%= particular.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Editar', edit_match_history_breed_path(@history, @breed), class: 'btn btn-primary' %>
+<%= link_to 'Voltar', [:match, @history], class: 'btn btn-default' %>

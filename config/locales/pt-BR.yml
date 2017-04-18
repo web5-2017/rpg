@@ -2,20 +2,53 @@ pt-BR:
   hello: "Ola Mundo"
   activerecord:
     models:
-        user:
-          one: 'Usuário'
-          other: 'Usuários'
-        game:
-          one: 'Partida'
-          other: 'Partidas'
-        history:
-          one: 'História'
-          other: 'Histórias'
-    attributes:
       user:
+        one: 'Usuário'
+        other: 'Usuários'
+      game:
+        one: 'Partida'
+        other: 'Partidas'
+      history:
+        one: 'História'
+        other: 'Histórias'
+      breed:
+        one: 'Raça'
+        other: 'Raças'
+      map:
+        one: 'Mapa'
+        other: 'Mapas'
+      picture:
+        one: 'Imagem'
+        other: 'Imagens'
+      character:
+        one: "Personagem"
+        other: "Personagens"
+    attributes:
+      attribute_commons: &commons
         name: "Nome"
+        description: "Descrição"
+      user:
         email: "E-mail"
         password: "Senha"
+        <<: *commons
       history:
         title: "Título"
         content: 'Conteúdo'
+      breed:
+        particulars: "Características"
+        <<: *commons
+      character:
+        skills: "Habilidades"
+        breeds: "Raças"
+        <<: *commons
+      game:
+        <<: *commons
+      map:
+        rows: "Linhas"
+        columns: "Colunas"
+        <<: *commons
+      picture:
+        image: "Imagem"
+      skill:
+        duration: "Duração"
+        <<: *commons

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417190538) do
+ActiveRecord::Schema.define(version: 20170418190153) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.string   "bootsy_resource_type"
@@ -33,6 +33,33 @@ ActiveRecord::Schema.define(version: 20170417190538) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["history_id"], name: "index_breeds_on_history_id"
+  end
+
+  create_table "breeds_characters", id: false, force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "breed_id",     null: false
+    t.index ["character_id", "breed_id"], name: "index_breeds_characters_on_character_id_and_breed_id", unique: true
+  end
+
+  create_table "breeds_particulars", id: false, force: :cascade do |t|
+    t.integer "breed_id",      null: false
+    t.integer "particular_id", null: false
+    t.index ["breed_id", "particular_id"], name: "index_breeds_particulars_on_breed_id_and_particular_id", unique: true
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "history_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["history_id"], name: "index_characters_on_history_id"
+  end
+
+  create_table "characters_skills", id: false, force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "skill_id",     null: false
+    t.index ["character_id", "skill_id"], name: "index_characters_skills_on_character_id_and_skill_id", unique: true
   end
 
   create_table "games", force: :cascade do |t|
@@ -75,6 +102,13 @@ ActiveRecord::Schema.define(version: 20170417190538) do
     t.index ["history_id"], name: "index_maps_on_history_id"
   end
 
+  create_table "particulars", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.string   "image"
     t.datetime "created_at", null: false
@@ -83,9 +117,9 @@ ActiveRecord::Schema.define(version: 20170417190538) do
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
-    t.integer  "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

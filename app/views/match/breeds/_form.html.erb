@@ -1,6 +1,9 @@
 <%= simple_form_for([:match, @history, @breed]) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.association :particulars, as: :check_boxes %>
+
+  <div class="divider"></div>
 
   <%= f.button :submit, class: "btn btn-primary" %>
   <%= link_to "Voltar", :back, class: "btn btn-default" %>

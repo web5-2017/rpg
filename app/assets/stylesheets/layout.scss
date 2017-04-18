@@ -58,3 +58,11 @@ footer {
   border-bottom: 1px solid black;
   margin: 20px 0;
 }
+
+.check_boxes {
+  display: block;
+}
+.check_boxes .checkbox {
+  display: inline-block;
+  margin: 5px;
+}

@@ -48,6 +48,6 @@ class Match::BreedsController < Match::AppMatchController
     end
 
     def breed_params
-      params.require(:breed).permit(:name, :description)
+      params.require(:breed).permit(:name, :description, particular_ids: [])
     end
 end

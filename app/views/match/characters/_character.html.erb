@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to character.name, [:match, @history, character] %></td>
+  <td>
+    <%= link_to 'Editar', edit_match_history_character_path(@history, character),
+                        class: 'btn btn-primary' %>
+    <%= link_to 'Deletar', [:match, @history, character],
+                method: :delete, data: { confirm: 'Tem certeza?' },
+                class: 'btn btn-danger' %>
+  </td>
+</tr>

@@ -1,0 +1,10 @@
+<%= simple_form_for [:match, @history, @character] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.association :skills, as: :check_boxes %>
+  <%= f.association :breeds, as: :check_boxes, collection: @breeds %>
+
+  <div class="divider"></div>
+  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= link_to 'Voltar', :back, class: "btn btn-default" %>
+<% end %>

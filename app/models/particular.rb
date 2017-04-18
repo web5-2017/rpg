@@ -1,0 +1,2 @@
+class Particular < ApplicationRecord
+end

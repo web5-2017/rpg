@@ -35,8 +35,11 @@ Rails.application.routes.draw do
       ################################ Rotas para Mapas ###############################
       resources :maps
 
-      ################################ Rotas para Mapas ###############################
+      ################################ Rotas para Raças ###############################
       resources :breeds
+
+      ################################ Rotas para Personagens ###############################
+      resources :characters
     end
   end
 
