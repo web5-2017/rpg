@@ -1,6 +1,10 @@
 <tr>
   <td>
-    <%= link_to history.title, [:match, history] %>
+    <% if controller.is_a? Match::GamesController %>
+      <%= history.title %>
+    <% else %>
+      <%= link_to history.title, [:match, history] %>
+    <% end %>
   </td>
   <td>
     <%= history.user.name %>

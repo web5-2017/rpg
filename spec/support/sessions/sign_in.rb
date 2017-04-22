@@ -7,6 +7,7 @@ module Sessions
       fill_in 'user[email]', with: email
       fill_in 'user[password]', with: password
     end
+    
     find('input[name="commit"]').click
 
     expect(page).to have_content 'Login efetuado com sucesso!'
