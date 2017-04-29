@@ -11,3 +11,13 @@ Skill.create! name: 'Ataque direto', description: "Avança no inimigo e o golpei
 
 Particular.create! name: 'Faro aguçado', description: "Capaz de sentir um cheiro a longas distâncias"
 Particular.create! name: 'Persuasão', description: "Tem maior chance de convencer os outros"
+
+Effect.create! name: 'Sangramento',
+               description: "Deixa o alvo sobre efeito de sangramento, perdendo 20 de hp por rodada",
+               value: 20,
+               duration: 3
+
+Effect.create! name: 'Cura',
+               description: "Restaura o hp em 50",
+               value: 50,
+               duration: 1
