@@ -23,6 +23,15 @@ pt-BR:
       character:
         one: "Personagem"
         other: "Personagens"
+      alternative:
+        one: "Alternativa"
+        other: "Alternativas"
+      challenge:
+        one: "Desafio"
+        other: "Desafios"
+      item:
+        one: "Item"
+        other: "Itens"
     attributes:
       attribute_commons: &commons
         name: "Nome"
@@ -51,4 +60,10 @@ pt-BR:
         image: "Imagem"
       skill:
         duration: "Duração"
+        <<: *commons
+      alternative:
+        content: "Conteúdo"
+      challenge:
+        <<: *commons
+      item:
         <<: *commons

@@ -3,6 +3,10 @@
     <% link_to 'Perfil', profile_root_path %>
   <% end %>
 
+  <%= li_active profile_search_users_path do %>
+    <% link_to 'Buscar Amigos', profile_search_users_path %>
+  <% end %>
+
   <%= li_active new_profile_game_path do %>
     <% link_to "Nova Partida", new_profile_game_path %>
   <% end %>

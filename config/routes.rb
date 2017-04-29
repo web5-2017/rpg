@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     ################################ Rotas para o usuário###############################
     root 'dashboard#index'
     get '/edit', to: 'dashboard#edit'
+    get '/search_users', to: 'dashboard#search_users'
 
     resources :users, only: :update
 

@@ -16,8 +16,8 @@ module ApplicationHelper
 
   def li_active(body = nil, url)
     body = yield unless body
-
-    if /^#{url}$/.match(request.fullpath)
+    
+    if /^#{url}$|^#{url}\?.*/.match(request.fullpath)
       "<li role='presentation' class='active'>#{body}</li>".html_safe
     else
       "<li role='presentation'>#{body}</li>".html_safe

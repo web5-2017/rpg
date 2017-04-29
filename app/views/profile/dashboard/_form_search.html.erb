@@ -1,0 +1,9 @@
+<div class="row">
+  <%= simple_form_for :search, url: profile_search_users_path, method: :get,
+                       html: { class: 'form-inline' }  do |f| %>
+    <div class="col-xs-6 col-xs-push-4">
+      <%= f.input :query, label: 'Busca:', input_html: { value: @query } %>
+      <%= f.submit 'Buscar', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
