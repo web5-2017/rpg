@@ -9,7 +9,7 @@ RSpec.feature "Games", type: :feature do
 
   describe 'Nova Partida' do
     before do
-      visit '/match/games/new'
+      visit '/profile/games/new'
     end
 
     context 'Estilos da pagina' do
@@ -32,7 +32,7 @@ RSpec.feature "Games", type: :feature do
         end
 
         it "Deve redirecionar para o show da partida depois que criala" do
-          expect(page).to have_current_path(match_game_path(Game.last))
+          expect(page).to have_current_path(profile_game_path(Game.last))
           expect(page).to have_content 'partida criada'
         end
       end
@@ -60,7 +60,7 @@ RSpec.feature "Games", type: :feature do
     let(:game) { create(:game, user: user) }
 
     before do
-      visit "/match/games/#{game.id}/edit"
+      visit "/profile/games/#{game.id}/edit"
 
       within("#edit_game_#{game.id}") do
         fill_in 'game[name]', with: 'test'
@@ -77,7 +77,7 @@ RSpec.feature "Games", type: :feature do
     let(:game) { create(:game, user: user) }
 
     before do
-      visit "/match/games"
+      visit "/profile/games"
 
       find('a[data-method="delete"]').click
     end

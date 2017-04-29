@@ -21,8 +21,8 @@
 //= require lib/images
 //= require lib/maps/map
 //= require lib/maps/table
-//= require match/histories
-//= require match/maps
-//= require match/challenges
+//= require profile/histories
+//= require profile/maps
+//= require profile/challenges
 
 window.APP = {}

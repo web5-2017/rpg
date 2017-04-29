@@ -1,0 +1,12 @@
+<% provide(:header, "Minhas histórias") %>
+
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <%= link_to "Nova História", new_profile_history_path,
+        class: "btn btn-primary pull-right" %>
+  </div>
+
+  <div class="panel-body">
+    <%= render 'table' %>
+  </div>
+</div>

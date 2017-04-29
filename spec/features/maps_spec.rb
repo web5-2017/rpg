@@ -9,7 +9,7 @@ RSpec.feature "Maps", type: :feature do
   describe 'Criando' do
     context 'Com sucesso' do
       before do
-        visit "/match/histories/#{history.id}/maps/new"
+        visit "/profile/histories/#{history.id}/maps/new"
 
         within("#new_map") do
           fill_in 'map[name]', with: 'test'

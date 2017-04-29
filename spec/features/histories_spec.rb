@@ -8,14 +8,14 @@ RSpec.feature "Histories", type: :feature do
   describe 'layout' do
     let!(:history) { create(:history, user: user) }
 
-    before { visit "/match/my-histories" }
+    before { visit "/profile/my-histories" }
 
     it 'deve conter os links para excluir' do
       expect(page).to have_css "a[data-method='delete']"
     end
 
     it 'deve conter os links para editar' do
-      expect(page).to have_css "a[href='#{edit_match_history_path(history)}']"
+      expect(page).to have_css "a[href='#{edit_profile_history_path(history)}']"
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.feature "Histories", type: :feature do
       game.histories.order :title
     end
 
-    before { visit "/match/games/#{game.id}" }
+    before { visit "/profile/games/#{game.id}" }
 
     context 'listagem de historias' do
       it 'Deve conter a tabela #table-histories' do
@@ -47,8 +47,8 @@ RSpec.feature "Histories", type: :feature do
 
     context 'Adicionando uma História' do
       before do
-        visit "/match/games/#{game.id}/histories"
-        find("a[href=\"/match/games/#{game.id}/histories/#{history.id}/add_history\"]").click
+        visit "/profile/games/#{game.id}/histories"
+        find("a[href=\"/profile/games/#{game.id}/histories/#{history.id}/add_history\"]").click
       end
 
       it 'Deve conter uma' do
@@ -58,7 +58,7 @@ RSpec.feature "Histories", type: :feature do
 
     context 'Removendo uma História' do
       before do
-        visit "/match/games/#{game.id}"
+        visit "/profile/games/#{game.id}"
         find('a[data-method="delete"]').click
       end
 

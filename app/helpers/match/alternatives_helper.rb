@@ -1,2 +1,0 @@
-module Match::AlternativesHelper
-end

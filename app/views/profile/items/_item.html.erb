@@ -1,0 +1,9 @@
+<tr>
+  <td><%= item.name %></td>
+  <td>
+    <%= link_to 'Editar', edit_profile_game_item_path(@game, item), class: 'btn btn-primary' %>
+    <%= link_to 'Deletar', profile_game_item_path(@game, item),
+                           class: 'btn btn-danger',
+                           method: :delete%>
+  </td>
+</tr>

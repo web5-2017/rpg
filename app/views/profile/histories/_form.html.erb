@@ -1,0 +1,12 @@
+<%= simple_form_for [:profile, @history] do |f| %>
+  <div class="row">
+    <div class="col-md-5 col-md-push-3 col-xs-12 page-header">
+      <%= f.input :title %>
+    </div>
+  </div>
+
+  <%= f.input :content, as: :bootsy, label: false, input_html: { rows: 20 } %>
+
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to "Voltar", :back, class: "btn btn-default" %>
+<% end %>

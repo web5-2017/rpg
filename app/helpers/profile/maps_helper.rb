@@ -1,0 +1,2 @@
+module Profile::MapsHelper
+end

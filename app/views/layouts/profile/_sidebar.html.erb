@@ -1,17 +1,17 @@
 <ul id="sidebar" class="nav nav-pills nav-stacked">
-  <%= li_active profile_path do %>
-    <% link_to 'Perfil', profile_path %>
+  <%= li_active profile_root_path do %>
+    <% link_to 'Perfil', profile_root_path %>
   <% end %>
 
-  <%= li_active new_match_game_path do %>
-    <% link_to "Nova Partida", new_match_game_path %>
+  <%= li_active new_profile_game_path do %>
+    <% link_to "Nova Partida", new_profile_game_path %>
   <% end %>
 
-  <%= li_active match_games_path do %>
-    <% link_to "Minhas Partidas", match_games_path %>
+  <%= li_active profile_games_path do %>
+    <% link_to "Minhas Partidas", profile_games_path %>
   <% end %>
 
-  <%= li_active match_my_histories_path do %>
-    <% link_to "Minhas histórias", match_my_histories_path %>
+  <%= li_active profile_my_histories_path do %>
+    <% link_to "Minhas histórias", profile_my_histories_path %>
   <% end %>
 </ul>

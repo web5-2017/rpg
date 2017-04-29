@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <% if controller.is_a? Profile::GamesController %>
+      <%= history.title %>
+    <% else %>
+      <%= link_to history.title, [:profile, history] %>
+    <% end %>
+  </td>
+  <td>
+    <%= history.user.name %>
+  </td>
+
+  <td>
+   <%= correct_table_column(@game, history) %>
+  </td>
+</tr>

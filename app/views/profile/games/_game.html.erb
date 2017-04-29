@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <%= link_to profile_game_path(game) do %>
+      <span class="glyphicon glyphicon-eye-open"></span> <%= game.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to edit_profile_game_path(game), class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-eye-open"></span> Editar
+    <% end %>
+    <%= link_to  profile_game_path(game), class: 'btn btn-danger', method: :delete do %>
+      <span class="glyphicon glyphicon-eye-open"></span> Deletar
+    <% end %>
+  </td>
+</tr>

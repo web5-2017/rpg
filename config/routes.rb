@@ -10,22 +10,26 @@ Rails.application.routes.draw do
   ################################ Rotas para historias ###############################
   resources :histories, only: [:show, :index]
 
-  ################################ Rotas para o usuário###############################
-  get '/profile', to: 'profile#index'
-  get '/profile/edit', to: 'profile#edit'
-
-  resources :users, only: :update
-
   ################################ Rotas para upload de images ###############################
   resources :pictures, only: [:index, :create]
 
-  ################################ Rotas para partidas ###############################
-  namespace :match do
+  ################################ Rotas para profile ###############################
+  namespace :profile do
+    ################################ Rotas para o usuário###############################
+    root 'dashboard#index'
+    get '/edit', to: 'dashboard#edit'
+
+    resources :users, only: :update
+
+    ################################ Rotas para o games ###############################
     resources :games do
+
+      ################################ Rotas para o histories em games ###############################
       resources :histories, only: :index do
         get '/add_history', to: 'games#add_history'
         delete '/remove_history', to: 'games#remove_history'
 
+        ################################ Rotas para o challenges ###############################
         resources :challenges do
           delete '/alternatives/:id', to: 'alternatives#destroy', as: 'alternative'
         end

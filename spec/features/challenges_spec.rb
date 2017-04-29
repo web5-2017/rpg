@@ -7,7 +7,7 @@ RSpec.feature "Challenges", type: :feature do
   before { sign_in user.email, user.password }
 
   describe 'Novo' do
-    before { visit new_match_game_history_challenge_path(game, history) }
+    before { visit new_profile_game_history_challenge_path(game, history) }
 
     context 'com sucesso' do
       before do
@@ -26,7 +26,7 @@ RSpec.feature "Challenges", type: :feature do
       end
 
       it 'deve redirecionar para o show' do
-        expect(page).to have_current_path(match_game_history_challenge_path(
+        expect(page).to have_current_path(profile_game_history_challenge_path(
                     game.id, history.id, Challenge.last.id))
       end
 
@@ -63,7 +63,7 @@ RSpec.feature "Challenges", type: :feature do
     let!(:alternatives) { create_list(:alternative, 5, challenge: challenge) }
 
     before do
-      visit edit_match_game_history_challenge_path(game, history, challenge)
+      visit edit_profile_game_history_challenge_path(game, history, challenge)
 
       within("#edit_challenge_#{challenge.id}") do
         fill_in 'challenge[name]', with: "test"
@@ -80,7 +80,7 @@ RSpec.feature "Challenges", type: :feature do
     end
 
     it 'deve redirecionar para o show' do
-      expect(page).to have_current_path(match_game_history_challenge_path(
+      expect(page).to have_current_path(profile_game_history_challenge_path(
                   game.id, history.id, Challenge.last.id))
     end
 
@@ -94,7 +94,7 @@ RSpec.feature "Challenges", type: :feature do
     let!(:alternative) { create(:alternative, challenge: challenge) }
 
     before do
-      visit match_game_history_challenges_path(game, history)
+      visit profile_game_history_challenges_path(game, history)
       find('#table-challenges a[data-method="delete"]').click
     end
 
@@ -103,7 +103,7 @@ RSpec.feature "Challenges", type: :feature do
     end
 
     it 'deve redirencionar para o index' do
-      expect(page).to have_current_path(match_game_history_challenges_path(game, history))
+      expect(page).to have_current_path(profile_game_history_challenges_path(game, history))
     end
   end
 end

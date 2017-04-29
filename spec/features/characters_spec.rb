@@ -7,7 +7,7 @@ RSpec.feature "Characters", type: :feature do
 
   describe 'Mostrando o Personagem' do
     let!(:character) { create(:character, history: history) }
-    before { visit "/match/histories/#{history.id}/characters/#{character.id}" }
+    before { visit "/profile/histories/#{history.id}/characters/#{character.id}" }
 
     it "deve conter o titulo com o nome" do
       expect(page).to have_css("h1", text: character.name)
@@ -15,7 +15,7 @@ RSpec.feature "Characters", type: :feature do
   end
 
   describe 'Criando personagem' do
-    before { visit "/match/histories/#{history.id}/characters/new" }
+    before { visit "/profile/histories/#{history.id}/characters/new" }
 
     context 'sucesso' do
       before do
@@ -57,7 +57,7 @@ RSpec.feature "Characters", type: :feature do
 
   describe 'Editando personagem' do
     let!(:character) { create(:character, history: history) }
-    before { visit "/match/histories/#{history.id}/characters/#{character.id}/edit" }
+    before { visit "/profile/histories/#{history.id}/characters/#{character.id}/edit" }
 
     before do
       within("#edit_character_#{character.id}") do

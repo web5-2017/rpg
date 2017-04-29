@@ -1,0 +1,23 @@
+<% provide :title, 'Perfil' %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div id="edit-btn">
+      <%= link_to "Editar", edit_user_registration_path, class: "btn btn-primary" %>
+    </div>
+
+    <h3>Perfil de <%= current_user.name %></h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <%= render 'form_image' %>
+
+      <div class="list-group col-md-8 col-xs-12">
+        <a href="#" class="list-group-item active">Dados da conta</a>
+        <a href="#" class="list-group-item">Nome: <%= current_user.name %></a>
+        <a href="#" class="list-group-item">Idade: <%= current_user.age %></a>
+      </div>
+    </div>
+  </div>
+</div>

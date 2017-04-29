@@ -1,0 +1,31 @@
+<%= simple_form_for [:profile, @game, @history, @challenge] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+
+  <div id="alternatives">
+    <div class="page-header">
+      <h4>Alternativas</h4>
+    </div>
+
+    <%= f.simple_fields_for :alternatives do |alt_f| %>
+        <div class="row">
+          <div class="col-xs-10">
+            <%= alt_f.input :content %>
+          </div>
+
+          <div class="col-xs-2">
+            <% if f.object.alternatives.count > 2 %>
+              <%= link_to 'x', profile_game_history_challenge_alternative_path(@game, @history, @challenge, alt_f.object),
+                               method: :delete, class: 'btn btn-default' %>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="clearfix">
+    <button id="add-alternative" type="button" class="pull-right btn btn-default">+</button>
+  </div>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

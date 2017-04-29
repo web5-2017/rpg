@@ -1,0 +1,20 @@
+<div class="page-header text-center">
+  <h1><%= @breed.name %></h1>
+</div>
+
+<p>
+  <strong>Descrição:</strong>
+  <p><%= @breed.description %></p>
+</p>
+
+<p>
+  <strong>Caracteristicas:</strong>
+  <ul>
+    <% @breed.particulars.each do |particular| %>
+      <li><%= particular.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Editar', edit_profile_history_breed_path(@history, @breed), class: 'btn btn-primary' %>
+<%= link_to 'Voltar', [:profile, @history], class: 'btn btn-default' %>

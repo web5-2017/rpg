@@ -9,8 +9,7 @@
   </head>
   <body>
 
-    <main id="<%= controller.controller_name %>-<%= controller.action_name %>"
-      class="<%= controller.is_a?(Match::AppMatchController) ? 'no-footer' : '' %>">
+    <main id="<%= controller.controller_name %>-<%= controller.action_name %>">
       <%= render "layouts/navbar" %>
 
       <section id="content">
@@ -28,6 +27,6 @@
       </section><!-- #content -->
     </main><!-- #<%= controller.controller_name %>-<%= controller.action_name %> -->
 
-    <%= render "layouts/footer" unless controller.is_a? Match::AppMatchController %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

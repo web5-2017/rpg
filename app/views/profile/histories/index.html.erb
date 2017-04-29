@@ -1,0 +1,13 @@
+<% provide(:header, "Histórias disponívels") %>
+
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h4 class="pull-left">Histórias</h4>
+    <%= link_to "Voltar", [:profile, @game],
+        class: "btn btn-primary pull-right" %>
+  </div>
+
+  <div class="panel-body">
+    <%= render 'table' %>
+  </div>
+</div>
