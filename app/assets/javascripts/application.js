@@ -23,5 +23,6 @@
 //= require lib/maps/table
 //= require match/histories
 //= require match/maps
+//= require match/challenges
 
 window.APP = {}

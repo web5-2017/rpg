@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418190153) do
+ActiveRecord::Schema.define(version: 20170422010126) do
+
+  create_table "alternatives", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "challenge_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["challenge_id"], name: "index_alternatives_on_challenge_id"
+  end
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.string   "bootsy_resource_type"
@@ -45,6 +53,17 @@ ActiveRecord::Schema.define(version: 20170418190153) do
     t.integer "breed_id",      null: false
     t.integer "particular_id", null: false
     t.index ["breed_id", "particular_id"], name: "index_breeds_particulars_on_breed_id_and_particular_id", unique: true
+  end
+
+  create_table "challenges", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "game_id"
+    t.integer  "history_id"
+    t.index ["game_id"], name: "index_challenges_on_game_id"
+    t.index ["history_id"], name: "index_challenges_on_history_id"
   end
 
   create_table "characters", force: :cascade do |t|

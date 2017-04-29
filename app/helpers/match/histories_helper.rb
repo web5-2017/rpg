@@ -12,8 +12,10 @@ module Match::HistoriesHelper
                     class: 'btn btn-danger', method: :delete)
       end
     else
-        link_to 'Remover', match_game_history_remove_history_path(game, history),
-                    class: 'btn btn-danger', method: :delete
+        link_to('Remover', match_game_history_remove_history_path(game, history),
+                    class: 'btn btn-danger', method: :delete) + " " +
+        link_to('Desafios', match_game_history_challenges_path(game, history),
+                    class: 'btn btn-default')
     end
   end
 

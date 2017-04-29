@@ -1,0 +1,19 @@
+<div class="page-header text-center">
+  <h1><%= @challenge.name %></h1>
+</div>
+
+<p>
+  <strong>Descrição:</strong>
+  <p><%= @challenge.description %></p>
+</p>
+
+<p>
+  <strong>Alternativas:</strong>
+  <ul>
+    <% @challenge.alternatives.each do |alternative| %>
+      <li><%= alternative.content %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Voltar', match_game_history_challenges_path(@game, @history), class: "btn btn-default" %>

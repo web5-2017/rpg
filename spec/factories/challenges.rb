@@ -4,6 +4,5 @@ FactoryGirl.define do
     description { Faker::Name.name }
     game { }
     history { }
-    alternatives { }
   end
 end

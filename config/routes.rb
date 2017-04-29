@@ -25,6 +25,10 @@ Rails.application.routes.draw do
       resources :histories, only: :index do
         get '/add_history', to: 'games#add_history'
         delete '/remove_history', to: 'games#remove_history'
+
+        resources :challenges do
+          delete '/alternatives/:id', to: 'alternatives#destroy', as: 'alternative'
+        end
       end
     end
 
