@@ -30,6 +30,8 @@ Rails.application.routes.draw do
           delete '/alternatives/:id', to: 'alternatives#destroy', as: 'alternative'
         end
       end
+
+      resources :items
     end
 
     ################################ Rotas para historias ###############################
