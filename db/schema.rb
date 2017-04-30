@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429011739) do
+ActiveRecord::Schema.define(version: 20170429234033) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(version: 20170429011739) do
     t.integer  "duration"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "friend_list", force: :cascade do |t|
+    t.integer "first_friend_id"
+    t.integer "second_friend_id"
+    t.index ["first_friend_id"], name: "index_friend_list_on_first_friend_id"
+    t.index ["second_friend_id"], name: "index_friend_list_on_second_friend_id"
   end
 
   create_table "games", force: :cascade do |t|

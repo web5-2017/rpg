@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     get '/edit', to: 'dashboard#edit'
     get '/search_users', to: 'dashboard#search_users'
 
-    resources :users, only: :update
+    resources :users, only: :update do
+      get '/adding_friend', to: 'users#adding_friend'
+    end
 
     ################################ Rotas para o games ###############################
     resources :games do

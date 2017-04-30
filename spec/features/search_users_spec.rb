@@ -9,37 +9,56 @@ RSpec.feature "SearchUsers", type: :feature do
     visit '/profile/search_users'
   end
 
-  it 'Deve conter um input de busca' do
-    expect(page).to have_css "input[name='search[query]']"
-  end
-
-  it 'Não deve retornar o usuário da sessão' do
+  def search(user)
     within(".form-inline") do
       fill_in 'search[query]', with: user.name
     end
 
     find('input[name="commit"]').click
-
-    expect(page).to_not have_css("table", text: user.name)
   end
 
-  it 'Deve retornar um usuário' do
-    within(".form-inline") do
-      fill_in 'search[query]', with: users.first.name
-    end
-
-    find('input[name="commit"]').click
-
-    expect(page).to have_css("table", text: users.first.name)
+  it 'Deve conter um input de busca' do
+    expect(page).to have_css "input[name='search[query]']"
   end
 
-  it 'Não deve retornar um usuário sem relação  a busca' do
-    within(".form-inline") do
-      fill_in 'search[query]', with: users.first.name
+  describe 'Buscando usuários' do
+
+    context 'Não deve retornar' do
+      it 'o usuário da sessão' do
+        search user
+        expect(page).to_not have_css("table", text: user.name)
+      end
+
+      it 'um usuário sem relação  a busca' do
+        search users.first
+        expect(page).to_not have_css("table", text: users.last.name)
+      end
     end
 
-    find('input[name="commit"]').click
+    context 'Deve retornar' do
+      it 'um usuário' do
+        search users.first
+        expect(page).to have_css("table", text: users.first.name)
+      end
+    end
+  end
 
-    expect(page).to_not have_css("table", text: users.last.name)
+  describe 'Adicionando um usuário' do
+
+    it 'Deve adicionar um usuário' do
+      search users.first
+      find("#user_#{users.first.id}").click
+
+      expect(user.friend_list).to include users.first
+    end
+
+    it 'não deve adicionar um usuário que ja é amigo' do
+      search users.first
+      find("#user_#{users.first.id}").click
+
+
+      expect(page).to_not have_css("#user_#{users.first.id}")
+    end
+
   end
 end

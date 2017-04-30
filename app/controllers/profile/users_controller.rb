@@ -11,4 +11,11 @@ class Profile::UsersController < Profile::AppProfileController
 
     redirect_to profile_edit_path
   end
+
+  def adding_friend
+    user = User.find params[:user_id]
+    current_user.friend_list << user unless(user == current_user and current_user.friend_list.exists?(user))
+
+    redirect_to profile_search_users_path(search: { query: params[:search][:query]})
+  end
 end

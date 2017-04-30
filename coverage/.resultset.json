@@ -12,17 +12,17 @@
         1,
         null,
         1,
-        8,
+        12,
         null,
-        4,
+        6,
         null,
         null,
         1,
-        8,
+        12,
         0,
         null,
         null,
-        8,
+        12,
         0,
         null,
         null,
@@ -38,12 +38,12 @@
         1,
         null,
         1,
+        13,
         7,
-        3,
-        3,
+        7,
         null,
-        4,
-        4,
+        6,
+        6,
         null,
         null,
         null
@@ -54,6 +54,29 @@
         1,
         null,
         1,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/users_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        2,
+        null,
         null
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/channels/application_cable/channel.rb": [
@@ -557,22 +580,6 @@
         0,
         0
       ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/users_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/application_helper.rb": [
         0,
         0,
@@ -798,6 +805,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/uploaders/avatar_uploader.rb": [
@@ -859,6 +871,6 @@
         0
       ]
     },
-    "timestamp": 1493505450
+    "timestamp": 1493513189
   }
 }
