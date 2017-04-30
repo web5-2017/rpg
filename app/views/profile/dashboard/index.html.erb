@@ -1,3 +1,20 @@
 <% provide :title, 'Perfil' %>
+<% provide :title, 'Meu Perfil' %>
 
-<h1>Perfil</h1>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h4 class="pull-left">Lista de amigos</h4>
+    <%= link_to 'Buscar Amigos', profile_search_users_path,
+                class: "btn btn-primary pull-right"%>
+  </div>
+
+  <div class="panel-body">
+    <% unless @users.empty? %>
+      <%= render 'table' %>
+    <% else %>
+      <div class="text-center">
+        <span>Você não tem amigos</span>
+      </div>
+    <% end %>
+  </div>
+</div>

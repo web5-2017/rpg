@@ -3,4 +3,10 @@
 
 <%= render 'form_search' %>
 
-<%= render 'table' %>
+<% unless @users.empty? %>
+  <%= render 'table' %>
+<% else %>
+  <div class="text-center">
+    <span>Nenhum resultado</span>
+  </div>
+<% end %>

@@ -45,20 +45,24 @@ RSpec.feature "SearchUsers", type: :feature do
 
   describe 'Adicionando um usuário' do
 
-    it 'Deve adicionar um usuário' do
+    before do
       search users.first
       find("#user_#{users.first.id}").click
+    end
 
+    it 'deve adicionar um usuário' do
       expect(user.friend_list).to include users.first
     end
 
     it 'não deve adicionar um usuário que ja é amigo' do
-      search users.first
-      find("#user_#{users.first.id}").click
-
-
       expect(page).to_not have_css("#user_#{users.first.id}")
     end
 
+    it 'deve remover o usuário' do
+      visit profile_root_path
+      find("#user_#{users.first.id}_remove").click
+      
+      expect(user.friend_list).to_not include users.first
+    end
   end
 end

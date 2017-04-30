@@ -14,8 +14,16 @@ class Profile::UsersController < Profile::AppProfileController
 
   def adding_friend
     user = User.find params[:user_id]
-    current_user.friend_list << user unless(user == current_user and current_user.friend_list.exists?(user))
+    current_user.friend_list << user unless (user == current_user and
+                                              current_user.friend_list.exists?(user.id))
 
     redirect_to profile_search_users_path(search: { query: params[:search][:query]})
+  end
+
+  def removing_friend
+    user = User.find params[:user_id]
+    current_user.friend_list.delete(user) if (current_user.friend_list.exists?(user.id))
+
+    redirect_to profile_root_path
   end
 end

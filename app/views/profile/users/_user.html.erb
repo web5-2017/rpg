@@ -4,7 +4,11 @@
   <td>
     <% unless current_user.friend_list.exists? user.id %>
       <%= link_to 'Adicionar', profile_user_adding_friend_path(user, search: {query: @query}),
-                               id: "user_#{user.id}" %>
+                               id: "user_#{user.id}", class: 'btn btn-primary' %>
+    <% end %>
+    <% if controller.action_name == 'index' %>
+      <%= link_to 'Desfazer amizade', profile_user_removing_friend_path(user),
+                             id: "user_#{user.id}_remove", class: 'btn btn-danger' %>
     <% end %>
   </td>
 </tr>

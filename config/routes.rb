@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     resources :users, only: :update do
       get '/adding_friend', to: 'users#adding_friend'
+      get '/removing_friend', to: 'users#removing_friend'
     end
 
     ################################ Rotas para o games ###############################
