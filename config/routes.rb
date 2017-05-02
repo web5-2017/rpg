@@ -40,6 +40,12 @@ Rails.application.routes.draw do
       end
 
       resources :items
+
+      resources :players, only: :index
+
+      get '/friend_list', to: 'players#friend_list'
+      get '/players/:id/add', to: 'players#adding_friend', as: 'add_friend'
+      get '/players/:id/remove', to: 'players#removing_friend', as: 'remove_friend'
     end
 
     ################################ Rotas para historias ###############################

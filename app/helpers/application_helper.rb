@@ -14,10 +14,18 @@ module ApplicationHelper
      { success: "ok-circle", error: "remove-circle", alert: "warning-sign", notice: "exclamation-sign" }[flash_type] || "question-sign"
   end
 
-  def li_active(body = nil, url)
+  def li_active(*urls)
     body = yield unless body
-    
-    if /^#{url}$|^#{url}\?.*/.match(request.fullpath)
+    active = false
+
+    urls.each do |url|
+      if /^#{url}$|^#{url}\?.*/.match(request.fullpath)
+        active = true
+        break
+      end
+    end
+
+    if active
       "<li role='presentation' class='active'>#{body}</li>".html_safe
     else
       "<li role='presentation'>#{body}</li>".html_safe

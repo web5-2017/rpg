@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user.name %></td>
+  <td>
+    <% unless @game.players.exists? user.id %>
+      <%= link_to 'Adicionar', profile_game_add_friend_path(@game, user), class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'Remover', profile_game_remove_friend_path(@game, user), class: 'btn btn-danger' %>
+    <% end %>
+  </td>
+</tr>
