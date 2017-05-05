@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429234033) do
+ActiveRecord::Schema.define(version: 20170505194621) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170429234033) do
   create_table "breeds", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "history_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["history_id"], name: "index_breeds_on_history_id"
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_breeds_on_game_id"
   end
 
   create_table "breeds_characters", id: false, force: :cascade do |t|
@@ -69,10 +69,10 @@ ActiveRecord::Schema.define(version: 20170429234033) do
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "history_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["history_id"], name: "index_characters_on_history_id"
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_characters_on_game_id"
   end
 
   create_table "characters_skills", id: false, force: :cascade do |t|

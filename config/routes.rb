@@ -39,7 +39,14 @@ Rails.application.routes.draw do
         end
       end
 
+      ################################ Rotas para Items ###############################
       resources :items
+
+      ################################ Rotas para Raças ###############################
+      resources :breeds
+
+      ################################ Rotas para Personagens ###############################
+      resources :characters
 
       resources :players, only: :index
 
@@ -54,12 +61,6 @@ Rails.application.routes.draw do
 
       ################################ Rotas para Mapas ###############################
       resources :maps
-
-      ################################ Rotas para Raças ###############################
-      resources :breeds
-
-      ################################ Rotas para Personagens ###############################
-      resources :characters
     end
   end
 

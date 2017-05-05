@@ -1,7 +1,16 @@
 {
   "RSpec": {
     "coverage": {
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/players_controller.rb": [
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/game.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         1,
         null
       ],
@@ -16,9 +25,75 @@
         1,
         null,
         1,
+        12,
+        null,
+        6,
+        null,
+        null,
+        1,
+        12,
         0,
         null,
+        null,
+        12,
         0,
+        null,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/character.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/characters_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        4,
+        4,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        4,
+        null,
+        4,
+        2,
+        2,
+        null,
+        2,
+        2,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        0,
+        0,
+        null,
         null,
         null,
         1,
@@ -26,10 +101,38 @@
         0,
         null,
         null,
-        0,
-        0,
+        1,
+        1,
+        14,
         null,
         null,
+        1,
+        6,
+        null,
+        null,
+        1,
+        5,
+        null,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/app_profile_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/skill.rb": [
+        1,
+        null
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/breed.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
         null
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/channels/application_cable/channel.rb": [
@@ -52,12 +155,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/home_controller.rb": [
         0,
         0,
         0,
@@ -93,14 +190,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/app_profile_controller.rb": [
         0,
         0,
         0,
@@ -172,65 +261,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/characters_controller.rb": [
         0,
         0,
         0,
@@ -565,6 +595,38 @@
         0,
         0
       ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/players_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/users_controller.rb": [
         0,
         0,
@@ -622,6 +684,14 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/breeds_helper.rb": [
@@ -637,10 +707,6 @@
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/pictures_helper.rb": [
-        0,
-        0
-      ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/players_helper.rb": [
         0,
         0
       ],
@@ -684,6 +750,10 @@
         0,
         0
       ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/profile/players_helper.rb": [
+        0,
+        0
+      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/profile_helper.rb": [
         0,
         0,
@@ -711,14 +781,6 @@
         0,
         0
       ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/breed.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/challenge.rb": [
         0,
         0,
@@ -732,33 +794,11 @@
         0,
         0
       ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/character.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/effect.rb": [
         0,
         0
       ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/game.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/history.rb": [
-        0,
-        0,
         0,
         0,
         0,
@@ -800,10 +840,6 @@
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/picture.rb": [
         0,
-        0,
-        0
-      ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/skill.rb": [
         0,
         0
       ],
@@ -891,6 +927,6 @@
         0
       ]
     },
-    "timestamp": 1493591320
+    "timestamp": 1494015355
   }
 }

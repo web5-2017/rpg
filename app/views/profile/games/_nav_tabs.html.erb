@@ -7,7 +7,15 @@
     <% link_to 'Items', profile_game_items_path(@game) %>
   <% end %>
 
-  <%= li_active(profile_game_players_path(@game), profile_game_friend_list_path(@game))  do %>
+  <%= li_active(profile_game_players_path(@game), profile_game_friend_list_path(@game)) do %>
     <% link_to 'Jogadores', profile_game_players_path(@game) %>
+  <% end %>
+
+  <%= li_active profile_game_breeds_path(@game) do %>
+    <% link_to 'Raças', profile_game_breeds_path(@game) %>
+  <% end %>
+
+  <%= li_active profile_game_characters_path(@game) do %>
+    <% link_to 'Personagens', profile_game_characters_path(@game) %>
   <% end %>
 </ul>
