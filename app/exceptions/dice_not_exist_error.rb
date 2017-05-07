@@ -1,0 +1,2 @@
+class DiceNotExistError < RuntimeError
+end
