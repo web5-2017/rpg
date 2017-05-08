@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505194621) do
+ActiveRecord::Schema.define(version: 20170507235254) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20170505194621) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "additional"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -166,6 +167,7 @@ ActiveRecord::Schema.define(version: 20170505194621) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "modifier"
   end
 
   create_table "users", force: :cascade do |t|

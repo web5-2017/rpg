@@ -6,18 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Skill.create! name: 'Ataque de fogo', description: "Lança uma bola de fogo que queima o inimigo"
-Skill.create! name: 'Ataque direto', description: "Avança no inimigo e o golpeia"
 
-Particular.create! name: 'Faro aguçado', description: "Capaz de sentir um cheiro a longas distâncias"
-Particular.create! name: 'Persuasão', description: "Tem maior chance de convencer os outros"
+Skill.create_with(description: "Lança uma bola de fogo que queima o inimigo",
+                  modifier: 20
+                  ).find_or_create_by(name: 'Ataque de fogo')
 
-Effect.create! name: 'Sangramento',
-               description: "Deixa o alvo sobre efeito de sangramento, perdendo 20 de hp por rodada",
-               value: 20,
-               duration: 3
+Skill.create_with(description: "Avança no inimigo e o golpeia",
+                  modifier: 40
+                  ).find_or_create_by(name: 'Ataque direto')
 
-Effect.create! name: 'Cura',
-               description: "Restaura o hp em 50",
-               value: 50,
-               duration: 1
+Particular.create_with(description: "Capaz de sentir um cheiro a longas distâncias",
+                  additional: 'des:10'
+                  ).find_or_create_by(name: 'Faro aguçado')
+
+Particular.create_with(description: "Tem maior chance de convencer os outros",
+                   additional: 'car:10'
+                  ).find_or_create_by(name: 'Persuasão')
+
+Effect.create_with(description: "Deixa o alvo sobre efeito de sangramento, perdendo 20 de hp por rodada",
+                    value: -5,
+                    duration: 3
+                  ).find_or_create_by(name: 'Sangramento')
+
+Effect.create_with(description: "Restaura o hp em 50",
+                    value: 50,
+                    duration: 1
+                  ).find_or_create_by(name: 'Cura')
