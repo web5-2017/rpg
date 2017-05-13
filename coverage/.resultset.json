@@ -1,30 +1,20 @@
 {
   "RSpec": {
     "coverage": {
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/dice.rb": [
-        1,
-        1,
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/game_controller.rb": [
         1,
         null,
         1,
-        2,
-        null,
-        2,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
-        2,
-        1,
-        null,
+        0,
         null,
         null,
         null
       ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/exceptions/dice_not_exist_error.rb": [
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/app_match_controller.rb": [
+        1,
+        1,
+        1,
+        null,
         1,
         null
       ],
@@ -405,6 +395,10 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/profile/histories_controller.rb": [
@@ -649,6 +643,15 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/exceptions/dice_not_exist_error.rb": [
+        0,
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/application_helper.rb": [
@@ -696,6 +699,10 @@
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/home_helper.rb": [
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/match/game_helper.rb": [
         0,
         0
       ],
@@ -796,6 +803,29 @@
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/character.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/dice.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -954,6 +984,6 @@
         0
       ]
     },
-    "timestamp": 1494129421
+    "timestamp": 1494660134
   }
 }

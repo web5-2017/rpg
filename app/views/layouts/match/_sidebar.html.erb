@@ -1,0 +1,5 @@
+<ul id="sidebar" class="nav nav-pills nav-stacked">
+  <%= li_active match_game_path(@game) do %>
+    <% link_to 'Inicio', match_game_path(@game) %>
+  <% end %>
+</ul>

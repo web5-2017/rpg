@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
 
     ################################ Rotas para o games ###############################
+    get 'games_that_i_play', to: 'games#games_that_i_play'
     resources :games do
 
       ################################ Rotas para o histories em games ###############################
@@ -53,7 +54,7 @@ Rails.application.routes.draw do
       get '/friend_list', to: 'players#friend_list'
       get '/players/:id/add', to: 'players#adding_friend', as: 'add_friend'
       get '/players/:id/remove', to: 'players#removing_friend', as: 'remove_friend'
-    end
+    end# >>>>>>>>>>>>>>> Fim Rotas Games
 
     ################################ Rotas para historias ###############################
     get '/my-histories', to: 'histories#my_histories'
@@ -62,6 +63,11 @@ Rails.application.routes.draw do
       ################################ Rotas para Mapas ###############################
       resources :maps
     end
+  end# >>>>>>>>>>>>>>> Fim Rotas profile
+
+  ################################ Rotas para Match ###############################
+  namespace :match do
+    resources :game, only: :show
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
