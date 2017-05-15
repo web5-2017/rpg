@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :character do
+  factory :breed do
     name        { Faker::Name.name }
     description { Faker::Name.name }
-    breeds { }
+    game { }
   end
 end

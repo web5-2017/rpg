@@ -4,7 +4,10 @@ APP.breeds_selected = ->
     $.ajax(
       url: "/match/game/#{$('#user_character_breed_id').data('game')}/breeds/#{@.value}"
       success: (classes)->
-        select = "<select class=\"form-control\" name=\"user_character[character_id]\">
+        label = "<label class=\"control-label select required\" for=\"user_character_character_id\">
+                    Classes</label>"
+
+        select = "<select id=\"user_character_character_id\" class=\"form-control\" name=\"user_character[character_id]\">
                     <option>Escolha uma classe</option>"
 
         $.each classes, (index, character) ->
@@ -12,5 +15,5 @@ APP.breeds_selected = ->
 
         select += "</select>"
 
-        $('#characters').html(select)
+        $('#characters').html(label + select)
     )

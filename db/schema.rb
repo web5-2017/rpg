@@ -10,14 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513095831) do
+ActiveRecord::Schema.define(version: 20170515071018) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
     t.integer  "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "exp"
     t.index ["challenge_id"], name: "index_alternatives_on_challenge_id"
+  end
+
+  create_table "alternatives_user_characters", id: false, force: :cascade do |t|
+    t.integer "alternative_id",    null: false
+    t.integer "user_character_id", null: false
   end
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
@@ -193,6 +199,8 @@ ActiveRecord::Schema.define(version: 20170513095831) do
     t.integer  "breed_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "exp",                  default: 1
+    t.integer  "level",                default: 1
     t.index ["breed_id"], name: "index_user_characters_on_breed_id"
     t.index ["character_id"], name: "index_user_characters_on_character_id"
     t.index ["game_id"], name: "index_user_characters_on_game_id"

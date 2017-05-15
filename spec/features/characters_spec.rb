@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.feature "Characters", type: :feature do
   let!(:user) { create(:user_actived) }
   let!(:game) { create(:game, user: user) }
+  let!(:breed) { create(:breed, game: game) }
+  let!(:history) { create(:history, user: user, games: [game])}
   before { sign_in user.email, user.password }
 
   describe 'Mostrando o Personagem' do
-    let!(:character) { create(:character, game: game) }
+    let!(:character) { create(:character, breeds: [breed], game: game) }
     before { visit "/profile/games/#{game.id}/characters/#{character.id}" }
 
     it "deve conter o titulo com o nome" do
@@ -56,7 +58,7 @@ RSpec.feature "Characters", type: :feature do
   end
 
   describe 'Editando personagem' do
-    let!(:character) { create(:character, game: game) }
+    let!(:character) { create(:character, breeds: [breed], game: game) }
     before { visit "/profile/games/#{game.id}/characters/#{character.id}/edit" }
 
     before do

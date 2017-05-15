@@ -13,11 +13,10 @@
     história:
     <p><%= @character.history %></p>
 
-    raça:
-    <p><%= @character.breed.name %></p>
+    <p>raça: <%= @character.breed.name %></p>
 
-    classe:
-    <p><%= @character.character.name %></p>
+    <p>classe: <%= @character.character.name %></p>
+
 
     <%= render 'attributes' %>
   </article>

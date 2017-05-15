@@ -1,5 +1,5 @@
 <div id="<%= attr_name %>-box" class="row">
-  <span class="col-xs-3"><%= attr_name %>:
+  <span class="col-xs-3"><%= UserCharacter.human_attribute_name(attr_name) %>:
     <span id="<%= attr_name %>" data-value="<%= value %>"><%= value %></span></span>
     <div class="action-attr col-xs-3">
       <% unless @character.confirmed_attributes %>

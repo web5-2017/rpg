@@ -9,8 +9,14 @@
 
     <%= f.simple_fields_for :alternatives do |alt_f| %>
         <div class="row">
-          <div class="col-xs-10">
-            <%= alt_f.input :content %>
+          <div class="col-xs-10 row">
+            <div class="col-xs-8">
+              <%= alt_f.input :content %>
+            </div>
+
+            <div class="col-xs-2">
+              <%= alt_f.input :exp %>
+            </div>
           </div>
 
           <div class="col-xs-2">
