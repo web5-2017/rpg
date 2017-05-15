@@ -18,6 +18,7 @@
           <header class="page-header">
             <h1><%= @game.name %></h1>
           </header>
+          <%= render "shared/flash_message" %>
 
           <%= yield %>
         </div>

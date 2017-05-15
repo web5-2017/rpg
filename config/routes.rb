@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  get '/cast_dice', to: 'dices#cast_dice'
 
   ################################ Rotas para devise ###############################
   devise_for :users
@@ -67,7 +68,16 @@ Rails.application.routes.draw do
 
   ################################ Rotas para Match ###############################
   namespace :match do
-    resources :game, only: :show
+    resources :game, only: :show do
+      resources :breeds, only: :show
+
+      get '/character', to: 'characters#show'
+      patch '/character', to: 'characters#update'
+      post '/character', to: 'characters#create'
+      post '/save_attrs', to: 'characters#save_attrs'
+      get '/character/edit', to: 'characters#edit'
+      get '/character/new', to: 'characters#new'
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

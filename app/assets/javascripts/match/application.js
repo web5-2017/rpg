@@ -17,9 +17,8 @@
 //= require turbolinks
 //= require bootsy
 //= require_self
-//= require loads
-//= require lib/images
-//= require lib/maps/map
-//= require lib/maps/table
+//= require match/loads
+//= require match/character
+//= require match/new_character
 
 window.APP = {}

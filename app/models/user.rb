@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :games
+  has_many :characters, class_name: 'UserCharacter' 
   has_and_belongs_to_many :games_playing, class_name: 'Game'
   has_many :histories
   has_and_belongs_to_many  :friend_list,

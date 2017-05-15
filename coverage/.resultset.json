@@ -1,16 +1,9 @@
 {
   "RSpec": {
     "coverage": {
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/game_controller.rb": [
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/user_character.rb": [
         1,
-        null,
         1,
-        0,
-        null,
-        null,
-        null
-      ],
-      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/app_match_controller.rb": [
         1,
         1,
         1,
@@ -57,6 +50,21 @@
         0,
         0
       ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/dices_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/histories_controller.rb": [
         0,
         0,
@@ -72,6 +80,95 @@
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/home_controller.rb": [
         0,
+        0,
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/app_match_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/breeds_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/characters_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/controllers/match/game_controller.rb": [
         0,
         0,
         0
@@ -702,6 +799,14 @@
         0,
         0
       ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/match/breeds_helper.rb": [
+        0,
+        0
+      ],
+      "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/match/character_helper.rb": [
+        0,
+        0
+      ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/helpers/match/game_helper.rb": [
         0,
         0
@@ -787,6 +892,7 @@
         0,
         0,
         0,
+        0,
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/challenge.rb": [
@@ -812,6 +918,16 @@
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/models/dice.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -923,6 +1039,7 @@
         0,
         0,
         0,
+        0,
         0
       ],
       "/media/jefferson/6BAAA86B14896DC3/UTFPR/2017-1º/web5/workspace/rpg/app/uploaders/avatar_uploader.rb": [
@@ -984,6 +1101,6 @@
         0
       ]
     },
-    "timestamp": 1494660134
+    "timestamp": 1494819239
   }
 }
