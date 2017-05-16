@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.feature "Characters", type: :feature do
   let!(:user) { create(:user_actived) }
-  let!(:history) { create(:history, user: user) }
+  let!(:game) { create(:game, user: user) }
+  let!(:breed) { create(:breed, game: game) }
+  let!(:history) { create(:history, user: user, games: [game])}
   before { sign_in user.email, user.password }
 
   describe 'Mostrando o Personagem' do
-    let!(:character) { create(:character, history: history) }
-    before { visit "/profile/histories/#{history.id}/characters/#{character.id}" }
+    let!(:character) { create(:character, breeds: [breed], game: game) }
+    before { visit "/profile/games/#{game.id}/characters/#{character.id}" }
 
     it "deve conter o titulo com o nome" do
       expect(page).to have_css("h1", text: character.name)
@@ -15,7 +17,7 @@ RSpec.feature "Characters", type: :feature do
   end
 
   describe 'Criando personagem' do
-    before { visit "/profile/histories/#{history.id}/characters/new" }
+    before { visit "/profile/games/#{game.id}/characters/new" }
 
     context 'sucesso' do
       before do
@@ -56,8 +58,8 @@ RSpec.feature "Characters", type: :feature do
   end
 
   describe 'Editando personagem' do
-    let!(:character) { create(:character, history: history) }
-    before { visit "/profile/histories/#{history.id}/characters/#{character.id}/edit" }
+    let!(:character) { create(:character, breeds: [breed], game: game) }
+    before { visit "/profile/games/#{game.id}/characters/#{character.id}/edit" }
 
     before do
       within("#edit_character_#{character.id}") do

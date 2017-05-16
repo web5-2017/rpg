@@ -1,0 +1,12 @@
+<%= simple_form_for @character, url: match_game_character_path(@game) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :history %>
+
+  <% if @character.id.nil? %>
+    <%= f.association :breed, collection: @breeds, input_html: {data: {game: @game.id}} %>
+    <div id="characters" class="form-group"></div>
+  <% end %>
+
+  <div class="divider"></div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

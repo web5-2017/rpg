@@ -11,11 +11,15 @@
     <% link_to "Nova Partida", new_profile_game_path %>
   <% end %>
 
-  <%= li_active profile_games_path do %>
+  <%= li_active profile_games_path, '/profile/games/.', '/profile/games/./.*' do %>
     <% link_to "Minhas Partidas", profile_games_path %>
   <% end %>
 
-  <%= li_active profile_my_histories_path do %>
+  <%= li_active profile_my_histories_path, '/profile/histories/.*' do %>
     <% link_to "Minhas histórias", profile_my_histories_path %>
+  <% end %>
+
+  <%= li_active profile_games_that_i_play_path do %>
+    <% link_to "Partidas abertas", profile_games_that_i_play_path %>
   <% end %>
 </ul>

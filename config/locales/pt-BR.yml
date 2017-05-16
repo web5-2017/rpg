@@ -32,6 +32,9 @@ pt-BR:
       item:
         one: "Item"
         other: "Itens"
+      user_character:
+        one: "Personagem"
+        other: "Personagens"
     attributes:
       attribute_commons: &commons
         name: "Nome"
@@ -66,4 +69,20 @@ pt-BR:
       challenge:
         <<: *commons
       item:
+        <<: *commons
+      user_character:
+        history: "Hitória"
+        str: "For"
+        dex: "Des"
+        con: "Con"
+        int: "Int"
+        wis: "Sab"
+        cha: "Car"
+        atk: "Ataque"
+        magic_atk: "Ataque mágico"
+        hp: "HP"
+        mp: "MP"
+        def: "Def"
+        magic_def: "Defesa mágica"
+        breed: "Raça"
         <<: *commons

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  get '/cast_dice', to: 'dices#cast_dice'
 
   ################################ Rotas para devise ###############################
   devise_for :users
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     end
 
     ################################ Rotas para o games ###############################
+    get 'games_that_i_play', to: 'games#games_that_i_play'
     resources :games do
 
       ################################ Rotas para o histories em games ###############################
@@ -39,14 +41,21 @@ Rails.application.routes.draw do
         end
       end
 
+      ################################ Rotas para Items ###############################
       resources :items
+
+      ################################ Rotas para Raças ###############################
+      resources :breeds
+
+      ################################ Rotas para Personagens ###############################
+      resources :characters
 
       resources :players, only: :index
 
       get '/friend_list', to: 'players#friend_list'
       get '/players/:id/add', to: 'players#adding_friend', as: 'add_friend'
       get '/players/:id/remove', to: 'players#removing_friend', as: 'remove_friend'
-    end
+    end# >>>>>>>>>>>>>>> Fim Rotas Games
 
     ################################ Rotas para historias ###############################
     get '/my-histories', to: 'histories#my_histories'
@@ -54,12 +63,20 @@ Rails.application.routes.draw do
 
       ################################ Rotas para Mapas ###############################
       resources :maps
+    end
+  end# >>>>>>>>>>>>>>> Fim Rotas profile
 
-      ################################ Rotas para Raças ###############################
-      resources :breeds
+  ################################ Rotas para Match ###############################
+  namespace :match do
+    resources :game, only: :show do
+      resources :breeds, only: :show
 
-      ################################ Rotas para Personagens ###############################
-      resources :characters
+      get '/character', to: 'characters#show'
+      patch '/character', to: 'characters#update'
+      post '/character', to: 'characters#create'
+      post '/save_attrs', to: 'characters#save_attrs'
+      get '/character/edit', to: 'characters#edit'
+      get '/character/new', to: 'characters#new'
     end
   end
 
