@@ -4,6 +4,8 @@ class Game < ApplicationRecord
   has_and_belongs_to_many :histories
   has_many :challenges
   has_many :items
+  has_many :breeds
+  has_many :characters
 
   validates :name, presence: true
 end

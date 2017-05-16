@@ -1,26 +1,26 @@
 class Profile::CharactersController < Profile::AppProfileController
-  before_action :find_history
+  before_action :find_game
   before_action :find_character, only: [:show, :edit, :update, :destroy]
 
   def index
-    @characters = @history.characters.all
+    @characters = @game.characters.all
   end
 
   def new
-    @character = @history.characters.new
-    @breeds = @history.breeds.all
+    @character = @game.characters.new
+    @breeds = @game.breeds.all
   end
 
   def edit
-    @breeds = @history.breeds.all
+    @breeds = @game.breeds.all
   end
 
   def create
-    @character = @history.characters.new(character_params)
+    @character = @game.characters.new(character_params)
 
     if @character.save
       flash[:success] = "personagem criado"
-      redirect_to [:profile, @history, @character]
+      redirect_to [:profile, @game, @character]
     else
       flash[:success] = "erro ao criar o personagem"
       render :new
@@ -30,7 +30,7 @@ class Profile::CharactersController < Profile::AppProfileController
   def update
     if @character.update(character_params)
       flash[:success] = "personagem atualizado"
-      redirect_to [:profile, @history, @character]
+      redirect_to [:profile, @game, @character]
     else
       flash[:success] = "erro ao atualizar o personagem"
       render :edit
@@ -39,16 +39,16 @@ class Profile::CharactersController < Profile::AppProfileController
 
   def destroy
     @character.destroy
-    redirect_to [:profile, @history]
+    redirect_to [:profile, @game]
   end
 
   private
-    def find_history
-      @history = current_user.histories.find params[:history_id]
+    def find_game
+      @game = current_user.games.find params[:game_id]
     end
 
     def find_character
-      @character = @history.characters.find(params[:id])
+      @character = @game.characters.find(params[:id])
     end
 
     def character_params

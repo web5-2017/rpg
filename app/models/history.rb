@@ -3,8 +3,6 @@ class History < ApplicationRecord
 
   has_and_belongs_to_many :games
   has_many :maps
-  has_many :breeds
-  has_many :characters
   belongs_to :user
 
   def destroy

@@ -10,14 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429234033) do
+ActiveRecord::Schema.define(version: 20170515071018) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
     t.integer  "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "exp"
     t.index ["challenge_id"], name: "index_alternatives_on_challenge_id"
+  end
+
+  create_table "alternatives_user_characters", id: false, force: :cascade do |t|
+    t.integer "alternative_id",    null: false
+    t.integer "user_character_id", null: false
   end
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
@@ -37,10 +43,10 @@ ActiveRecord::Schema.define(version: 20170429234033) do
   create_table "breeds", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "history_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["history_id"], name: "index_breeds_on_history_id"
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_breeds_on_game_id"
   end
 
   create_table "breeds_characters", id: false, force: :cascade do |t|
@@ -69,10 +75,10 @@ ActiveRecord::Schema.define(version: 20170429234033) do
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "history_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["history_id"], name: "index_characters_on_history_id"
+    t.integer  "game_id"
+    t.index ["game_id"], name: "index_characters_on_game_id"
   end
 
   create_table "characters_skills", id: false, force: :cascade do |t|
@@ -153,6 +159,7 @@ ActiveRecord::Schema.define(version: 20170429234033) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "additional"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -166,6 +173,38 @@ ActiveRecord::Schema.define(version: 20170429234033) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "modifier"
+  end
+
+  create_table "user_characters", force: :cascade do |t|
+    t.string   "name"
+    t.text     "history"
+    t.integer  "str",                  default: 0
+    t.integer  "dex",                  default: 0
+    t.integer  "con",                  default: 0
+    t.integer  "int",                  default: 0
+    t.integer  "wis",                  default: 0
+    t.integer  "cha",                  default: 0
+    t.integer  "atk",                  default: 10
+    t.integer  "magic_atk",            default: 20
+    t.integer  "hp",                   default: 20
+    t.integer  "mp",                   default: 10
+    t.integer  "def",                  default: 5
+    t.integer  "magic_def",            default: 10
+    t.boolean  "confirmed_attributes", default: false
+    t.boolean  "new_character",        default: true
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.integer  "character_id"
+    t.integer  "breed_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "exp",                  default: 1
+    t.integer  "level",                default: 1
+    t.index ["breed_id"], name: "index_user_characters_on_breed_id"
+    t.index ["character_id"], name: "index_user_characters_on_character_id"
+    t.index ["game_id"], name: "index_user_characters_on_game_id"
+    t.index ["user_id"], name: "index_user_characters_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

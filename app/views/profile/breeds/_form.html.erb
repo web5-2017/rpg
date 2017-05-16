@@ -1,4 +1,4 @@
-<%= simple_form_for([:profile, @history, @breed]) do |f| %>
+<%= simple_form_for([:profile, @game, @breed]) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.association :particulars, as: :check_boxes %>

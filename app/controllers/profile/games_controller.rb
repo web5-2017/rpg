@@ -67,6 +67,10 @@ class Profile::GamesController < Profile::AppProfileController
     redirect_to [:profile, game]
   end
 
+  def games_that_i_play
+    @games = current_user.games_playing
+  end
+
   private
 
   def game_params

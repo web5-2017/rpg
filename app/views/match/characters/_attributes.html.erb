@@ -1,0 +1,68 @@
+<div class="row page-header text-center">
+  <h4>Atributos</h4>
+</div>
+
+<% unless @character.confirmed_attributes %>
+  <p>Você tem pontos para distribuir</p>
+  <span>Total de pontos: <span id="total-points">20</span></span>
+<% end %>
+
+<div id="action" data-game="<%= @game.id %>">
+  <% if @character.confirmed_attributes and @character.new_character %>
+    <p>Você tem direito de jogar um dado de 6 para cada atributo</p>
+    <button id="dice" type="button" name="button" class="btn btn-primary">Jogar Dados</button>
+  <% end %>
+</div>
+<div class="divider"></div>
+
+<div class="row">
+
+  <div class="col-xs-6">
+    <%= render partial: 'attr', locals: { attr_name: 'str', value: @character.str } %>
+    <%= render partial: 'attr', locals: { attr_name: 'dex', value: @character.dex } %>
+    <%= render partial: 'attr', locals: { attr_name: 'con', value: @character.con } %>
+    <%= render partial: 'attr', locals: { attr_name: 'int', value: @character.int } %>
+    <%= render partial: 'attr', locals: { attr_name: 'wis', value: @character.wis } %>
+    <%= render partial: 'attr', locals: { attr_name: 'cha', value: @character.cha } %>
+  </div>
+
+  <div class="col-xs-6">
+    <div class="row">
+      <span class="col-xs-3">HP: <span id="hp"><%= @character.hp %></span></span>
+      <span class="col-xs-6">MP: <span id="mp"><%= @character.mp %></span></span>
+    </div>
+
+    <div class="row">
+      <span class="col-xs-3">Ataque: <span id="atk"><%= @character.atk %></span></span>
+      <span class="col-xs-6">Ataque magico: <span id="magic_atk"><%= @character.magic_atk %></span></span>
+    </div>
+
+    <div class="row">
+      <span class="col-xs-3">Defesa: <span id="def"><%= @character.def %></span></span>
+      <span class="col-xs-6">Defesa magica: <span id="magic_def"><%= @character.magic_def %></span></span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-header">
+      <h5>Perícias</h5>
+    </div>
+
+    <ul>
+      <% @character.breed.particulars.each do |particular| %>
+        <li><%= particular.name %></li>
+      <% end %>
+    </ul>
+
+    <div class="divider"></div>
+    <div class="page-header">
+      <h5>Habilidades</h5>
+    </div>
+
+    <ul>
+      <% @character.character.skills.each do |skill| %>
+        <li><%= skill.name %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
