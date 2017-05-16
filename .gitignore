@@ -21,4 +21,7 @@
 .byebug_history
 
 /coverage/*
+/coverage/.last_run.json
+/coverage/.resultset.json
+/coverage/index.html
 /public/uploads/*

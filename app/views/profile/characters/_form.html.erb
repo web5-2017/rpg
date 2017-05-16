@@ -1,4 +1,4 @@
-<%= simple_form_for [:profile, @history, @character] do |f| %>
+<%= simple_form_for [:profile, @game, @character] do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.association :skills, as: :check_boxes %>

@@ -1,9 +1,9 @@
 <tr>
-  <td><%= link_to character.name, [:profile, @history, character] %></td>
+  <td><%= link_to character.name, [:profile, @game, character] %></td>
   <td>
-    <%= link_to 'Editar', edit_profile_history_character_path(@history, character),
+    <%= link_to 'Editar', edit_profile_game_character_path(@game, character),
                         class: 'btn btn-primary' %>
-    <%= link_to 'Deletar', [:profile, @history, character],
+    <%= link_to 'Deletar', [:profile, @game, character],
                 method: :delete, data: { confirm: 'Tem certeza?' },
                 class: 'btn btn-danger' %>
   </td>
