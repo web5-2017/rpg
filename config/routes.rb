@@ -80,5 +80,12 @@ Rails.application.routes.draw do
     end
   end
 
+  ################################ Rotas para GM Match (área do gm) ###############################
+  namespace :gm_match do
+    scope '/game/:game_id' do
+      root 'dashboard#index'
+    end
+  end# >>>>>>>>>>>>>>> Fim Rotas gm match
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
