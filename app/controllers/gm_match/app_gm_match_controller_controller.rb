@@ -10,9 +10,9 @@ class GmMatch::AppGmMatchControllerController < ::ActionController::Base
       @game = current_user.games.find params[:game_id]
     rescue ActiveRecord::RecordNotFound => e
       puts e.message
-      render file: 'public/not_found_game.html',
+      render file: 'public/404.html',
              status: :not_found,
-             layout: '/layouts/errors/application'
+             layout: false
     end
   end
 end

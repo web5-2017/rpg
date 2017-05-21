@@ -2,4 +2,12 @@
   <%= li_active gm_match_root_path(@game) do %>
     <% link_to 'Inicio', gm_match_root_path(@game) %>
   <% end %>
+
+  <%= li_active '/gm_match/game/1/characters/npc.*' do %>
+    <% link_to 'NPCS', gm_match_characters_path(@game, :npc) %>
+  <% end %>
+
+  <%= li_active '/gm_match/game/1/characters/mob.*' do %>
+    <% link_to 'MOBS', gm_match_characters_path(@game, :mob) %>
+  <% end %>
 </ul>

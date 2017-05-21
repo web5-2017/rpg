@@ -17,6 +17,7 @@ FactoryGirl.define do
     magic_def { 30 }
     confirmed_attributes { true }
     new_character { false }
+    character_type { 'player' }
     user {}
     game {}
     character {}

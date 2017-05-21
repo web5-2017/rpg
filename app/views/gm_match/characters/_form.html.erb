@@ -1,0 +1,25 @@
+<%= simple_form_for @character, url: url do |f| %>
+  <%= f.input :game_id, as: :hidden, input_html: { value: @game.id } %>
+  <%= f.input :name %>
+  <%= f.input :history %>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.association :breed, collection: @breeds, prompt: "Escolha uma raça", input_html: {data: {game: @game.id}} %>
+    </div>
+
+    <div class="col-xs-6">
+      <div id="characters" class="form-group">
+        <% if @classes %>
+          <%= f.association :character, collection: @classes, prompt: "Escolha uma classe" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <%= render partial: 'attributes_form', locals: { f: f } %>
+
+  <%= f.submit submit, class: 'btn btn-primary' %>
+<% end %>

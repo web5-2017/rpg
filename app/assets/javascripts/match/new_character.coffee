@@ -2,7 +2,7 @@
 APP.breeds_selected = ->
   $('#user_character_breed_id').change ->
     $.ajax(
-      url: "/match/game/#{$('#user_character_breed_id').data('game')}/breeds/#{@.value}"
+      url: "/game/#{$('#user_character_breed_id').data('game')}/breeds/#{@.value}"
       success: (classes)->
         label = "<label class=\"control-label select required\" for=\"user_character_character_id\">
                     Classes</label>"

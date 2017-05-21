@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   get '/cast_dice', to: 'dices#cast_dice'
+  get '/game/:game_id/breeds/:id', to: 'breeds#show', as: :bread_characters
 
   ################################ Rotas para devise ###############################
   devise_for :users
@@ -69,8 +70,6 @@ Rails.application.routes.draw do
   ################################ Rotas para Match ###############################
   namespace :match do
     resources :game, only: :show do
-      resources :breeds, only: :show
-
       get '/character', to: 'characters#show'
       patch '/character', to: 'characters#update'
       post '/character', to: 'characters#create'
@@ -84,6 +83,8 @@ Rails.application.routes.draw do
   namespace :gm_match do
     scope '/game/:game_id' do
       root 'dashboard#index'
+
+      resources :characters, path: 'characters/:type'
     end
   end# >>>>>>>>>>>>>>> Fim Rotas gm match
 

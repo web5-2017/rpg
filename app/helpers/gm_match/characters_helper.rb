@@ -1,0 +1,2 @@
+module GmMatch::CharactersHelper
+end

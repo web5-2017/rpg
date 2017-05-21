@@ -1,0 +1,23 @@
+<% provide title: @game.name %>
+
+<article>
+  <header class="page-header text-center clearfix">
+    <h1>Listagem dos <%= @type %>s</h1>
+    <%= link_to "Novo #{@type}", new_gm_match_character_path(@game.id, @type), class: 'btn btn-primary pull-right' %>
+  </header>
+</article>
+<% if @characters %>
+  <table class="table">
+    <head>
+      <tr>
+        <th>Nome</th>
+        <th></th>
+      </tr>
+    </head>
+    <tbody>
+      <%= render @characters %>
+    </tbody>
+  </table>
+<% else %>
+  <h2>Não existe nenhum NPC nessa partida</h2>
+<% end %>

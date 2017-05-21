@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user_character.name %></td>
+  <td>
+    <%= link_to 'Detalhes', gm_match_character_path(@game, user_character.character_type ,user_character.id),
+                            class: 'btn btn-primary' %>
+
+    <%= link_to 'Remover', gm_match_character_path(@game, user_character.character_type ,user_character.id),
+          class: 'btn btn-danger', method: :delete %>
+  </td>
+</tr>

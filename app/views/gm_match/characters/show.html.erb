@@ -1,0 +1,21 @@
+<h1> <%= @character.name %> </h1>
+
+<p class="text-justify"><%= @character.history %></p>
+
+<div class="clearfix">
+  <%= link_to 'Editar', edit_gm_match_character_path(@game, @type, @character), class: 'btn btn-primary pull-right' %>
+</div>
+
+<div class="table-responsive">
+  <div class="page-header">
+    <h4>Status</h4>
+  </div>
+
+  <%= render 'status_table' %>
+
+  <div class="page-header">
+    <h4>Atributos</h4>
+  </div>
+
+  <%= render 'attr_table' %>
+</div>
