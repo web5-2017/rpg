@@ -1,0 +1,2 @@
+module GmMatch::SessionHelper
+end

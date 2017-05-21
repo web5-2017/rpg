@@ -3,3 +3,5 @@ $(document).on 'turbolinks:load', ->
   APP.cast_dice()
   APP.breeds_selected()
   APP.save_attrs()
+  APP.console_interator()
+  APP.scroll_console()

@@ -20,5 +20,6 @@
 //= require match/loads
 //= require match/character
 //= require match/new_character
+//= require match/session
 
 window.APP = {}

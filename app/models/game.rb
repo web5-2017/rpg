@@ -6,6 +6,7 @@ class Game < ApplicationRecord
   has_many :items
   has_many :breeds
   has_many :characters
+  has_many :session, class_name: 'Match::Session'
 
   validates :name, presence: true
 end

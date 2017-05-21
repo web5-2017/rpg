@@ -1,0 +1,18 @@
+// Place all the styles related to the gm_match/session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#session {
+}
+
+#console {
+  position: fixed;
+  width: 1050px;
+  bottom: 0;
+
+  pre {
+    max-height: 150px;
+    overflow: auto;
+    margin: 0;
+  }
+}

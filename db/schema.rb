@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519204114) do
+ActiveRecord::Schema.define(version: 20170521034737) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
@@ -152,6 +152,16 @@ ActiveRecord::Schema.define(version: 20170519204114) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["history_id"], name: "index_maps_on_history_id"
+  end
+
+  create_table "match_sessions", force: :cascade do |t|
+    t.integer  "game_id"
+    t.boolean  "opened",     default: false
+    t.boolean  "closed",     default: false
+    t.text     "log"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["game_id"], name: "index_match_sessions_on_game_id"
   end
 
   create_table "particulars", force: :cascade do |t|

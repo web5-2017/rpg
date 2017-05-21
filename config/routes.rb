@@ -85,6 +85,9 @@ Rails.application.routes.draw do
       root 'dashboard#index'
 
       resources :characters, path: 'characters/:type'
+
+      resources :sessions, only: :create
+      get '/sessions/:id/run_code', to: 'sessions#run_code', as: 'sessions_run_code'
     end
   end# >>>>>>>>>>>>>>> Fim Rotas gm match
 
