@@ -11,7 +11,9 @@ class GmMatch::SessionsController < GmMatch::AppGmMatchControllerController
     code = params[:code]
 
     match_session = @game.session.find params[:id]
-    match_session.run code, current_user
+    match_session.master_exec code, 'Mestre'
+
+    puts match_session.errors.to_json
 
     redirect_to gm_match_root_path(@game)
   end

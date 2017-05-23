@@ -69,13 +69,17 @@ Rails.application.routes.draw do
 
   ################################ Rotas para Match ###############################
   namespace :match do
-    resources :game, only: :show do
+    scope '/game/:game_id' do
+      root 'dashboard#index'
+
       get '/character', to: 'characters#show'
       patch '/character', to: 'characters#update'
       post '/character', to: 'characters#create'
       post '/save_attrs', to: 'characters#save_attrs'
       get '/character/edit', to: 'characters#edit'
       get '/character/new', to: 'characters#new'
+
+      get '/sessions/:id/run_code', to: 'sessions#run_code', as: 'sessions_run_code'
     end
   end
 

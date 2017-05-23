@@ -17,9 +17,12 @@
 //= require turbolinks
 //= require bootsy
 //= require_self
+//= require lib/maps/map
+//= require lib/maps/table
 //= require match/loads
 //= require match/character
 //= require match/new_character
 //= require match/session
+//= require profile/maps
 
 window.APP = {}

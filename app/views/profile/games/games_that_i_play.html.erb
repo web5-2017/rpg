@@ -16,7 +16,7 @@
           <tr>
             <td> <%= game.name %> </td>
             <td> <%= game.user.name %> </td>
-            <td> <%= link_to "entrar na partida", match_game_path(game) , class: 'btn btn-primary' %> </td>
+            <td> <%= link_to "entrar na partida", match_root_path(game) , class: 'btn btn-primary' %> </td>
           </tr>
         <% end %>
       </tbody>

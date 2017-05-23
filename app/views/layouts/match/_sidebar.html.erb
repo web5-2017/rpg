@@ -1,9 +1,9 @@
 <ul id="sidebar" class="nav nav-pills nav-stacked">
-  <%= li_active match_game_path(@game) do %>
-    <% link_to 'Inicio', match_game_path(@game) %>
+  <%= li_active match_root_path(@game) do %>
+    <% link_to 'Inicio', match_root_path(@game) %>
   <% end %>
 
-  <%= li_active match_game_character_path(@game) do %>
-    <% link_to 'Personagem', match_game_character_path(@game) %>
+  <%= li_active match_character_path(@game) do %>
+    <% link_to 'Personagem', match_character_path(@game) %>
   <% end %>
 </ul>

@@ -5,16 +5,12 @@
 APP.console_interator = ->
   $('#console-input').focus ->
     $('#console-input').keydown (e)->
-      if e.keyCode == 8 or e.keyCode == 46
-        user_name = $('#console-input').data('user')
-        if $('#console-input').val() == "#{user_name}# - "
-          e.preventDefault();
-
       if e.keyCode == 13
-        pattern = /.*# - (.*)/
-        code = pattern.exec($('#console-input').val())[1].trim()
+        code = $('#console-input').val().trim()
         location.href = $('#console-input').data('url') + "?code=#{code}";
 
 APP.scroll_console = ->
-  height = document.getElementById("console-output").scrollHeight
-  $('#console-output').scrollTop( height )
+  if typeof $('#console-output')[0] != 'undefined'
+    height = document.getElementById("console-output").scrollHeight
+    if height > 150
+      $('#console-output').scrollTop( height )

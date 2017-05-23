@@ -1,13 +1,13 @@
 <% if @character.nil? %>
   <p>
     Você ainda não possui um personagem nessa partida, por favor crie um
-    <%= link_to "Novo personagem", match_game_character_new_path(@game), class: 'btn btn-primary' %>
+    <%= link_to "Novo personagem", match_character_new_path(@game), class: 'btn btn-primary' %>
   </p>
 <% else %>
   <article class="">
     <header class="text-center clearfix">
       <h1><%= @character.name %></h1>
-      <%= link_to 'editar', match_game_character_edit_path(@game), class: 'btn btn-primary pull-right' %>
+      <%= link_to 'editar', match_character_edit_path(@game), class: 'btn btn-primary pull-right' %>
     </header>
 
     história:

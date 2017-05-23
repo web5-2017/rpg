@@ -1,20 +1,19 @@
 class Match::Session < ApplicationRecord
   belongs_to :game
+  belongs_to :map
 
   after_initialize :initial_log
 
-  HELP = "-------------- help\n\\start - para iniciar a partida"
+  def player_exec(code, name)
+    compiler = Match::Compiler.new(self, code, name, false)
+    compiler.run
 
-  def run(code, user)
-    inserting_in_the_log "#{user.name}# - #{code}"
+    self.save
+  end
 
-    case code
-    when '\start'
-      inserting_in_the_log "Partida iniciada"
-      self.opened = true
-    when '\help'
-      inserting_in_the_log HELP
-    end
+  def master_exec(code, name)
+    compiler = Match::Compiler.new(self, code, name, true)
+    compiler.run
 
     self.save
   end
@@ -23,6 +22,13 @@ class Match::Session < ApplicationRecord
     self.log += "\n" + text
   end
 
+  def have_permission_in_map?(id)
+    game.histories.each do |h|
+      return true if h.maps.exists?(id)
+    end
+
+    false
+  end
   private
 
   def initial_log

@@ -15,7 +15,7 @@ class Match::CharactersController < Match::AppMatchController
 
     if @character.save
       flash[:success] = "Personagem criado"
-      redirect_to match_game_character_path(@game)
+      redirect_to match_character_path(@game)
     else
       @breeds = @game.breeds
       flash.now[:error] = "Erro ao criar o personagem"
@@ -26,7 +26,7 @@ class Match::CharactersController < Match::AppMatchController
   def update
     if @character.update params_user_character
       flash[:success] = "Personagem atualizado"
-      redirect_to match_game_character_path(@game)
+      redirect_to match_character_path(@game)
     else
       flash.now[:error] = "Erro ao atualizar o personagem"
       render :new
@@ -39,7 +39,7 @@ class Match::CharactersController < Match::AppMatchController
       flash[:success] = "Atributos atualizados"
     end
 
-    redirect_to match_game_character_path(@game)
+    redirect_to match_character_path(@game)
   end
 
   private
