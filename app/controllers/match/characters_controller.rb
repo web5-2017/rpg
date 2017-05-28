@@ -7,6 +7,8 @@ class Match::CharactersController < Match::AppMatchController
   def new
     @character = current_user.characters.new game_id: @game.id
     @breeds = @game.breeds
+    @picture = Picture.new
+    @pictures = Picture.all
   end
 
   def create

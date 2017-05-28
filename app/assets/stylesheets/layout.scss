@@ -31,8 +31,15 @@ footer {
   image-preview file input
 *****************************************************/
 
+#commit-picture {
+    display: none;
+}
+
 #box-image-preview .input-field{
   position: relative;
+  width: 200px;
+  margin-left: 185px;
+  margin-bottom: 20px;
 
   .form-group {
     position: absolute;
@@ -43,13 +50,24 @@ footer {
   }
 
   #image {
-    height: 100% !important;
-    width: 100% !important;
+    height:100% !important;
+    width: 100%!important;
     display: block !important;
     opacity: 0 !important;
     overflow: hidden !important;
   }
 }
+
+// #pictures-index {
+//   #gallery {
+//     list-style: none;
+//
+//     li {
+//       display: inline;
+//       height: 188px;
+//     }
+//   }
+// }
 /*****************************************************
   Layouts
 *****************************************************/

@@ -5,4 +5,3 @@ $(document).on 'turbolinks:load', ->
   APP.save_attrs()
   APP.console_interator()
   APP.scroll_console()
-  APP.render_map()

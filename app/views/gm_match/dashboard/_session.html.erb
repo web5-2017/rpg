@@ -11,30 +11,6 @@
       </ul>
     </div>
   </div>
-
-  <div class="panel panel-default col-md-6 col-xs-12">
-    <div class="panel-heading">Mapa atual</div>
-    <div class="panel-body">
-      <%= @match_session.map.name %>
-      <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#map-modal">
-        Ver mapa
-      </button>
-    </div>
-  </div>
 </div>
-
-<div class="modal fade" id="map-modal"
-      tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <div class="map-box" data-map="#json_map"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<input type="hidden" id="json_map" value="<%= @match_session.map.json_map %>">
 
 <%= render partial: 'modals', collection: @match_session.game.histories, as: :history %>

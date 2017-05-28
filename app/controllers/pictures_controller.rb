@@ -8,13 +8,8 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new params.require(:picture).permit(:image)
+    @picture.save
 
-    if @picture.save
-      flash[:success] = "imagem salva no servidor"
-      redirect_to action: :index
-    else
-      flash[:error] = "houve um problema ao salvar a imagem"
-      redirect_to action: :index
-    end
+    render json: @picture.to_json
   end
 end

@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Match::Session, type: :model do
-  let!(:user) { create(:user_actived)}
-  let!(:history) { create(:history, user: user) }
-  let!(:history2) { create(:history, user: user) }
-  let!(:map) { create(:map, history: history) }
-  let!(:map2) { create(:map, history: history2) }
-  let!(:game) { create(:game, user: user, histories: [history]) }
+  let!(:gm) { create(:user_actived)}
+  let!(:player) { create(:user_actived)}
+  let!(:game) { create(:game, user: gm, players: [player]) }
+  let!(:breed) { create(:breed, game: game) }
+  let!(:character) { create(:character, breeds: [breed], game: game) }
+  let!(:char) { create(:user_character, user: player, dex: 3, character: character, breed: breed, game: game) }
+  let!(:mob_1) { create(:user_character, user: gm, dex: 30, character: character, breed: breed, game: game) }
+  let!(:mob_2) { create(:user_character, user: gm, dex: 20, character: character, breed: breed, game: game) }
   let!(:base_log) { "Partida criada\nEsperando jogadores..." }
 
   describe 'Comandos do mestre' do
@@ -43,22 +45,27 @@ RSpec.describe Match::Session, type: :model do
       expect(session.log).to eq base_log + "\nMestre# - teste\nComando desconhecido"
     end
 
-    it 'Deve mudar o mapa atual da sessão' do
+    it 'Não Deve criar uma batalha se a partida não iniciou' do
       session = Match::Session.new game_id: game.id
       session.save
 
-      session.master_exec("\\set_map #{map.id}", 'Mestre')
-      expect(session.log).to eq base_log + "\nMestre# - \\set_map #{map.id}\nMapa atual alterado"
-      expect(session.map_id).to eq map.id
+      log_text = "\nPara iniciar uma batalha, deve primeiro dar inicio na partida com '\\start'"
+
+      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      expect(session.log).to eq base_log + "\nMestre# - \\battle_start #{mob_1.id} #{mob_2.id}" + log_text
     end
 
-    it 'Deve informar no log que o mapa não existe' do
+    it 'Deve criar uma batalha' do
       session = Match::Session.new game_id: game.id
       session.save
+      session.master_exec('\start', 'Mestre')
 
-      session.master_exec("\\set_map #{map2.id}", 'Mestre')
-      expect(session.log).to eq base_log + "\nMestre# - \\set_map #{map2.id}\nEsse mapa não existe"
-      expect(session.map_id).to eq nil
+      log_text = session.log + "\nMestre# - \\battle_start #{mob_1.id} #{mob_2.id}\nBatalha iniciada\nÉ a vez de #{mob_1.name}"
+
+      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      expect(session.log).to eq log_text
+      expect(session.battle.character_turn).to eq mob_1
+      expect(session.battle.character_turn_id).to eq mob_1.id
     end
   end
 
