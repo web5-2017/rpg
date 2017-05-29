@@ -1,11 +1,14 @@
 class Match::Session < ApplicationRecord
   belongs_to :game
 
-  after_initialize :initial_log
+  after_initialize :initial_log, :initialize_battle
 
-  attr_accessor :battle
+  attr_accessor :battle, :current_char
 
-  def player_exec(code, name)
+  def player_exec(code, name, char)
+    @current_char = char
+    return false if @current_char.hp <= 0
+
     compiler = Match::Compiler.new(self, code, name, false)
     compiler.run
 
@@ -36,13 +39,44 @@ class Match::Session < ApplicationRecord
     mobs_ids.each { |id| chars << game.chars.find(id) }
 
     @battle = Match::Battle.new characters: chars, total: chars.size, turn: 0
-    battle_string= @battle.to_s
+    @battle.next
+    self.battle_string= @battle.to_s
 
     save
   end
 
   def load_battle
     @battle = Match::Battle.parse battle_string
+  end
+
+  def set_skill(id)
+    @current_char.set_skill id
+  end
+
+  def atk(target, current_char = nil)
+    @current_char = current_char if current_char
+
+    if @battle.nil?
+      inserting_in_the_log "Você não está em uma batalha"
+      return false
+    elsif !@battle.characters_ids.include? @current_char.id
+      inserting_in_the_log "Esse personagem não está na batalha"
+      return false
+    elsif !@battle.characters_ids.include? target.id
+      inserting_in_the_log "Esse alvo não está na batalha"
+      return false
+    elsif @battle.character_turn_id != @current_char.id
+      inserting_in_the_log "Espere sua vez para atacar"
+      return false
+    elsif(@current_char.hp <= 0)
+      inserting_in_the_log "O #{target.name} está morto!!"
+      return false
+    else
+      @current_char.attack target: target, dice: self.current_dice
+      @battle.next
+      self.battle_string = @battle.to_s
+      return true
+    end
   end
 
   private
@@ -60,5 +94,9 @@ class Match::Session < ApplicationRecord
     if self.id.nil?
       self.log = "Partida criada\nEsperando jogadores..."
     end
+  end
+
+  def initialize_battle
+    load_battle unless self.battle_string.nil?
   end
 end

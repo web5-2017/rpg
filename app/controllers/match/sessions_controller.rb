@@ -5,8 +5,8 @@ class Match::SessionsController < Match::AppMatchController
     code = params[:code]
 
     if char && !char.new_character
-      match_session = @game.session.find params[:id]
-      match_session.player_exec code, char.name
+      match_session = @game.sessions.find params[:id]
+      match_session.player_exec code, char.name, char
 
       redirect_to match_root_path(@game)
     else

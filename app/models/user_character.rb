@@ -49,6 +49,44 @@ class UserCharacter < ApplicationRecord
     save
   end
 
+  def attack(options = {})
+    dice = Dice.new options[:dice]
+
+    if options[:magic_atk]
+      modifier = dice.cast
+      damage = self.magic_atk + modifier - options[:target].magic_def
+
+      if damage > 0
+        options[:target].hp -= damage
+      end
+    elsif options[:skill]
+
+    else
+      modifier = dice.cast
+      damage = self.atk + modifier - options[:target].def
+
+      if damage > 0
+        options[:target].hp -= damage
+      end
+    end
+
+    options[:target].save
+    save
+  end
+
+  def set_skill(id)
+    if character.skills.include? id
+      self.current_skill_id = id
+      return save
+    end
+
+    return false
+  end
+
+  def live
+    self.hp <= 0 ? "Morto" : "Vivo"
+  end
+
   private
   def type_is_npc_or_mob?
     character_type == 'npc'

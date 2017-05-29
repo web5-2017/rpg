@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528031053) do
+ActiveRecord::Schema.define(version: 20170528121122) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20170528031053) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "battle_string"
+    t.integer  "current_dice",  default: 6
     t.index ["game_id"], name: "index_match_sessions_on_game_id"
   end
 

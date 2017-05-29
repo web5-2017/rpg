@@ -18,6 +18,8 @@ class Match::Battle
 
     @character_turn_id = @characters[index - 1].id
     @character_turn = @characters[index - 1]
+
+    self.next if @character_turn.hp <= 0
   end
 
   def character_turn
@@ -28,7 +30,7 @@ class Match::Battle
   def to_s
     create_characters_ids if @characters_ids.nil?
 
-    "{\"characters\":#{@characters_ids},\"total\":#{@total},\"turn\":#{@turn},\"character_turn_id\":#{@character_turn_id}}"
+    "{\"characters_ids\":#{@characters_ids},\"total\":#{@total},\"turn\":#{@turn},\"character_turn_id\":#{@character_turn_id}}"
   end
 
   def self.parse(string)
@@ -53,6 +55,8 @@ class Match::Battle
   end
 
   def sort_characters
+    create_characters if @characters.nil?
     @characters.sort! {|x, y| y.dex <=> x.dex}
+    create_characters_ids
   end
 end
