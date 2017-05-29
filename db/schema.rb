@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528121122) do
+ActiveRecord::Schema.define(version: 20170529031354) do
 
   create_table "alternatives", force: :cascade do |t|
     t.string   "content"
@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20170528121122) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "modifier"
+    t.string   "modifier"
   end
 
   create_table "user_characters", force: :cascade do |t|
@@ -214,9 +214,11 @@ ActiveRecord::Schema.define(version: 20170528121122) do
     t.integer  "exp",                  default: 1
     t.integer  "level",                default: 1
     t.string   "character_type"
+    t.integer  "skill_id"
     t.index ["breed_id"], name: "index_user_characters_on_breed_id"
     t.index ["character_id"], name: "index_user_characters_on_character_id"
     t.index ["game_id"], name: "index_user_characters_on_game_id"
+    t.index ["skill_id"], name: "index_user_characters_on_skill_id"
     t.index ["user_id"], name: "index_user_characters_on_user_id"
   end
 

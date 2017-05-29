@@ -4,8 +4,9 @@ RSpec.describe Match::Session, type: :model do
   let!(:gm) { create(:user_actived)}
   let!(:player) { create(:user_actived)}
   let!(:game) { create(:game, user: gm, players: [player]) }
+  let!(:skill) { create(:skill) }
   let!(:breed) { create(:breed, game: game) }
-  let!(:character) { create(:character, breeds: [breed], game: game) }
+  let!(:character) { create(:character, breeds: [breed], skills: [skill], game: game) }
   let!(:char) { create(:user_character, user: player, dex: 3, character: character, breed: breed, game: game) }
   let!(:mob_1) { create(:user_character, user: gm, dex: 30, character: character, breed: breed, game: game) }
   let!(:mob_2) { create(:user_character, user: gm, dex: 20, character: character, breed: breed, game: game) }
@@ -31,7 +32,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
 
-      help_text = "\n-------------- help\n\\start - para iniciar a partida\n\\battle_start [ids dos inimigos da batalha] exemplo: \\battle_start 1 4 5 20\n\\atk [id do alvo] [id do personagem] exemplo: atk 3 2"
+      help_text = "\n-------------- help\n\\start - para iniciar a partida\n\\battle_start [ids dos inimigos da batalha] exemplo: \\battle_start 1 4 5 20 - Para dar inicio a uma batalha\n\\atk [id do alvo] [id do personagem] exemplo: atk 3 2 - Para atacar um personagem\n\\current_dice [tipo do dado] exemplo: \\current_dice 6 - Muda o dado a ser usado nos ataques\n\\send_exp [quantidade de exp] [id(s) dos(s) personagem(s)] exemplo: \\send_exp 8 4 \\send_exp 8 4 3 - Para dar exp para um ou mais personagens\n\\cast_dice [tipo do dado] exemplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)\n\\set_skill [id do personagem] [id da habilidade] exemplo: \\set_skill 2 3 - Prepara a habilidade para o ataque"
 
       session.master_exec('\help', 'Mestre')
       expect(session.log).to eq base_log + "\nMestre# - \\help" + help_text
@@ -107,6 +108,20 @@ RSpec.describe Match::Session, type: :model do
       expect(session.log).to eq log_text
       expect(char.hp <= 0).to eq true
     end
+
+    it 'Deve dar exp para um personagem' do
+      session = Match::Session.new game_id: game.id
+      session.save
+      session.master_exec('\start', 'Mestre')
+      exp = char.exp
+
+      log_text = session.log + "\nMestre# - \\send_exp 5 #{char.id}\n#{char.name} recebeu 5 de exp"
+
+      session.master_exec("\\send_exp 5 #{char.id}", 'Mestre')
+      char.reload
+      expect(session.log).to eq log_text
+      expect(char.exp - 5).to eq exp
+    end
   end
 
   describe "Comandos do Player" do
@@ -114,7 +129,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
 
-      help_text = "\n-------------- help\\atk [id do alvo] exemplo: atk 4"
+      help_text = "\n-------------- help\\atk [id do alvo] exemplo: atk 4 - Para atacar um personagem\n\\set_skill [id da skill] exemplo: \\set_skill 2 - Prepara a habilidade para o ataque\n\\cast_dice [tipo do dado] exmplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)"
 
       session.player_exec('\help', 'User', char)
       expect(session.log).to eq base_log + "\nUser# - \\help" + help_text
@@ -160,7 +175,7 @@ RSpec.describe Match::Session, type: :model do
       mob_1.hp = 0
       mob_1.save
 
-      log_text = session.log + "\nUser# - \\atk #{mob_1.id}\nEsse personagem já morreu, por favor escolha outrou para atacar"
+      log_text = session.log + "\nUser# - \\atk #{mob_1.id}\nEsse personagem já morreu, por favor escolha outro para atacar"
 
       session.player_exec("\\atk #{mob_1.id}", 'User', char)
 
@@ -180,6 +195,36 @@ RSpec.describe Match::Session, type: :model do
       session.player_exec("\\atk #{mob_1.id}", 'User', char)
       expect(session.log).to eq log_text
     end
+
+    it 'Deve selecionar uma skill para o ataque' do
+      session = Match::Session.new game_id: game.id
+      session.save
+      session.master_exec('\start', 'Mestre')
+      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.battle.character_turn_id = char.id
+
+      log_text = session.log + "\nUser# - \\set_skill #{skill.id}\nSkill selecionada"
+
+      session.player_exec("\\set_skill #{skill.id}", 'User', char)
+      expect(session.log).to eq log_text
+      session.player_exec("\\atk #{mob_1.id}", 'User', char)
+    end
+
+    it 'Não deve selecionar a skill se não tiver mana' do
+      session = Match::Session.new game_id: game.id
+      session.save
+      session.master_exec('\start', 'Mestre')
+      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.battle.character_turn_id = char.id
+      char.mp = 0
+      char.save
+
+      log_text = session.log + "\nUser# - \\set_skill #{skill.id}\nVocê não tem essa skill ou não tem mana para executala"
+
+      session.player_exec("\\set_skill #{skill.id}", 'User', char)
+      expect(session.log).to eq log_text
+      session.player_exec("\\atk #{mob_1.id}", 'User', char)
+    end
   end
 
   describe 'Comandos compartilhados' do
@@ -194,6 +239,17 @@ RSpec.describe Match::Session, type: :model do
       session.master_exec("\\atk #{char.id} #{mob_1.id}", 'Mestre')
 
       expect(session.log).to eq log_text
+    end
+
+    it 'Deve lançar o dado' do
+      session = Match::Session.new game_id: game.id
+      session.save
+      session.master_exec('\start', 'Mestre')
+
+      pattern = /O Mestre jogou o dado e tirou [0-9]+$/
+
+      session.master_exec('\cast_dice 6', 'Mestre')
+      expect(pattern.match(session.log).nil?).to eq false
     end
   end
 

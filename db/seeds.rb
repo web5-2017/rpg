@@ -8,11 +8,11 @@
 
 
 Skill.create_with(description: "Lança uma bola de fogo que queima o inimigo",
-                  modifier: 20
+                  modifier: "atk:2,mp:10"
                   ).find_or_create_by(name: 'Ataque de fogo')
 
 Skill.create_with(description: "Avança no inimigo e o golpeia",
-                  modifier: 40
+                  modifier: "atk:6,mp:20"
                   ).find_or_create_by(name: 'Ataque direto')
 
 Particular.create_with(description: "Capaz de sentir um cheiro a longas distâncias",

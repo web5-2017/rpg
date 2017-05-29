@@ -53,7 +53,7 @@ class Match::Session < ApplicationRecord
     @current_char.set_skill id
   end
 
-  def atk(target, current_char = nil)
+  def atk(target, magic, current_char = nil)
     @current_char = current_char if current_char
 
     if @battle.nil?
@@ -72,11 +72,15 @@ class Match::Session < ApplicationRecord
       inserting_in_the_log "O #{target.name} está morto!!"
       return false
     else
-      @current_char.attack target: target, dice: self.current_dice
+      @current_char.attack target: target, dice: self.current_dice, magic_atk: magic
       @battle.next
       self.battle_string = @battle.to_s
       return true
     end
+  end
+
+  def send_exp(exp, char)
+    char.add_exp(exp)
   end
 
   private
