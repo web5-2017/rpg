@@ -1,2 +1,0 @@
-module GmMatch::AppGmMatchControllerHelper
-end

@@ -13,16 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require jquery.minicolors
 //= require turbolinks
 //= require bootsy
 //= require_self
 //= require loads
 //= require lib/images
-//= require lib/maps/map
-//= require lib/maps/table
-//= require profile/histories
-//= require profile/maps
-//= require profile/challenges
 
 window.APP = {}

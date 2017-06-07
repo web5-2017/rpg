@@ -14,13 +14,8 @@
  */
 
  @import "bootsy";
- @import "jquery.minicolors";
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "layout";
  @import "profile";
- @import "picture";
- @import "profile/games";
- @import "profile/maps";
-  @import "profile/challenges";

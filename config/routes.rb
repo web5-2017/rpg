@@ -12,9 +12,6 @@ Rails.application.routes.draw do
   ################################ Rotas para historias ###############################
   resources :histories, only: [:show, :index]
 
-  ################################ Rotas para upload de images ###############################
-  resources :pictures, only: [:index, :create]
-
   ################################ Rotas para profile ###############################
   namespace :profile do
     ################################ Rotas para o usuário###############################
@@ -35,16 +32,7 @@ Rails.application.routes.draw do
       resources :histories, only: :index do
         get '/add_history', to: 'games#add_history'
         delete '/remove_history', to: 'games#remove_history'
-
-        ################################ Rotas para o challenges ###############################
-        resources :challenges do
-          delete '/alternatives/:id', to: 'alternatives#destroy', as: 'alternative'
-        end
       end
-
-      ################################ Rotas para Items ###############################
-      resources :items
-
       ################################ Rotas para Raças ###############################
       resources :breeds
 
@@ -60,11 +48,7 @@ Rails.application.routes.draw do
 
     ################################ Rotas para historias ###############################
     get '/my-histories', to: 'histories#my_histories'
-    resources :histories, except: :index do
-
-      ################################ Rotas para Mapas ###############################
-      resources :maps
-    end
+    resources :histories, except: :index
   end# >>>>>>>>>>>>>>> Fim Rotas profile
 
   ################################ Rotas para Match ###############################

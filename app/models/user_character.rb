@@ -3,7 +3,6 @@ class UserCharacter < ApplicationRecord
   belongs_to :game
   belongs_to :character
   belongs_to :breed
-  has_and_belongs_to_many :alternatives
 
   validates :name, :history, presence: true
   validates :level,

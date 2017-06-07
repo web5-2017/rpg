@@ -37,8 +37,7 @@ footer {
 
 #box-image-preview .input-field{
   position: relative;
-  width: 200px;
-  margin-left: 185px;
+  width: 100%;
   margin-bottom: 20px;
 
   .form-group {
@@ -58,16 +57,6 @@ footer {
   }
 }
 
-// #pictures-index {
-//   #gallery {
-//     list-style: none;
-//
-//     li {
-//       display: inline;
-//       height: 188px;
-//     }
-//   }
-// }
 /*****************************************************
   Layouts
 *****************************************************/
@@ -83,40 +72,4 @@ footer {
 .check_boxes .checkbox {
   display: inline-block;
   margin: 5px;
-}
-
-/*****************************************************
-  map
-*****************************************************/
-
-.map-box {
-  overflow: hidden;
-  max-height: 600px;
-}
-
-.map-box:hover {
-  overflow: auto;
-}
-
-table.map {
-  border: 1px solid black;
-
-  th, td {
-      padding: 10px;
-      border: 1px solid black;
-  }
-}
-
-.form-box {
-  border-left: 1px solid black;
-}
-
-.component {
-  border: 1px solid black;
-  padding: 5px;
-  margin: 10px 0;
-}
-
-#active-component {
-  display: none;
 }

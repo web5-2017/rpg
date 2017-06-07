@@ -13,9 +13,7 @@ module Profile::HistoriesHelper
       end
     else
         link_to('Remover', profile_game_history_remove_history_path(game, history),
-                    class: 'btn btn-danger', method: :delete) + " " +
-        link_to('Desafios', profile_game_history_challenges_path(game, history),
-                    class: 'btn btn-default')
+                    class: 'btn btn-danger', method: :delete)
     end
   end
 
