@@ -1,7 +1,7 @@
 class GmMatch::AppGmMatchControllerController < ::ActionController::Base
   protect_from_forgery with: :exception
   before_action :find_game
-  layout '/layouts/gm_match/application'
+  layout '/layouts/gm_match/gm_application'
 
   protected
 

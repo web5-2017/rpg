@@ -3,7 +3,7 @@ class Match::AppMatchController < ::ActionController::Base
   before_action :authenticate_user!
   before_action :find_game
 
-  layout '/layouts/match/application'
+  layout '/layouts/match/match_application'
 
   private
   def find_game
