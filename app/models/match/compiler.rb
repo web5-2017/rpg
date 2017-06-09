@@ -31,15 +31,27 @@ class Match::Compiler
       start
     when '\help'
       @session.inserting_in_the_log HELP_ROOT
-    when '\battle_start'
+    when '\start_battle'
       if @session.opened
-        battle_start
+        unless @session.battle_string.nil?
+          @session.inserting_in_the_log "A batalha ja foi criada"
+        else
+          battle_start
+        end
       else
         @session.inserting_in_the_log ERROR_SESSION_NOT_STARTED
       end
+    when '\end_battle'
+      unless @session.battle_string.nil?
+        @session.battle= nil
+        @session.battle_string= nil
+        @session.inserting_in_the_log "Batalha finalizada"
+      else
+        @session.inserting_in_the_log "Nenhuma batalha criada"
+      end
     when '\current_dice'
       if @session.opened
-        @session.current_dice Integer(@code[1])
+        @session.current_dice= Integer(@code[1])
         @session.inserting_in_the_log "Dado mudado para #{@code[1]}"
       else
         @session.inserting_in_the_log ERROR_SESSION_NOT_STARTED
@@ -61,18 +73,29 @@ class Match::Compiler
   end
 
   def exec_for_all
-    case @code[0]
-    when '\atk'
-      exec_atk
-    when '\set_skill'
-      set_skill
-    when '\cast_dice'
-      dice = ::Dice.new(Integer(@code[1]))
-      @session.inserting_in_the_log "O #{@user_name} jogou o dado e tirou #{dice.cast}"
+    if @session.opened
+      case @code[0]
+      when '\atk'
+        unless @session.battle_string.nil?
+          exec_atk
+        else
+          @session.inserting_in_the_log "Você não está em uma batalha"
+        end
+      when '\set_skill'
+        unless @session.battle_string.nil?
+          set_skill
+        else
+          @session.inserting_in_the_log "Você não está em uma batalha"
+        end
+      when '\cast_dice'
+        dice = ::Dice.new(Integer(@code[1]))
+        @session.inserting_in_the_log "O #{@user_name} jogou o dado e tirou #{dice.cast}"
+      else
+        @session.inserting_in_the_log NOT_FOUND
+      end
     else
-      @session.inserting_in_the_log NOT_FOUND
+      @session.inserting_in_the_log ERROR_SESSION_NOT_STARTED
     end
-
   end
 
   def start
