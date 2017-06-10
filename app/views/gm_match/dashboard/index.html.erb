@@ -1,0 +1,13 @@
+<% if @match_session.nil?  %>
+ <p>
+   Nenhuma sessão em andamento, gostaria de criar uma? <%= link_to 'Criar Sessão',
+                                                                   gm_match_sessions_path(@game),
+                                                                   class: 'btn btn-primary',
+                                                                   method: :post %>
+ </p>
+<% else %>
+  <article id="session">
+    <%= render 'session' %>
+    <%= render 'console' %>
+  </article>
+<% end %>

@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515071018) do
-
-  create_table "alternatives", force: :cascade do |t|
-    t.string   "content"
-    t.integer  "challenge_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "exp"
-    t.index ["challenge_id"], name: "index_alternatives_on_challenge_id"
-  end
+ActiveRecord::Schema.define(version: 20170529031354) do
 
   create_table "alternatives_user_characters", id: false, force: :cascade do |t|
     t.integer "alternative_id",    null: false
@@ -61,17 +52,6 @@ ActiveRecord::Schema.define(version: 20170515071018) do
     t.index ["breed_id", "particular_id"], name: "index_breeds_particulars_on_breed_id_and_particular_id", unique: true
   end
 
-  create_table "challenges", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "game_id"
-    t.integer  "history_id"
-    t.index ["game_id"], name: "index_challenges_on_game_id"
-    t.index ["history_id"], name: "index_challenges_on_history_id"
-  end
-
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -85,15 +65,6 @@ ActiveRecord::Schema.define(version: 20170515071018) do
     t.integer "character_id", null: false
     t.integer "skill_id",     null: false
     t.index ["character_id", "skill_id"], name: "index_characters_skills_on_character_id_and_skill_id", unique: true
-  end
-
-  create_table "effects", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "value"
-    t.integer  "duration"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "friend_list", force: :cascade do |t|
@@ -132,26 +103,16 @@ ActiveRecord::Schema.define(version: 20170515071018) do
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "effect_id"
+  create_table "match_sessions", force: :cascade do |t|
     t.integer  "game_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["effect_id"], name: "index_items_on_effect_id"
-    t.index ["game_id"], name: "index_items_on_game_id"
-  end
-
-  create_table "maps", force: :cascade do |t|
-    t.string   "name"
-    t.text     "json_map"
-    t.integer  "rows"
-    t.integer  "columns"
-    t.integer  "history_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["history_id"], name: "index_maps_on_history_id"
+    t.boolean  "opened",        default: false
+    t.boolean  "closed",        default: false
+    t.text     "log"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "battle_string"
+    t.integer  "current_dice",  default: 6
+    t.index ["game_id"], name: "index_match_sessions_on_game_id"
   end
 
   create_table "particulars", force: :cascade do |t|
@@ -162,18 +123,12 @@ ActiveRecord::Schema.define(version: 20170515071018) do
     t.string   "additional"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "skills", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "modifier"
+    t.string   "modifier"
   end
 
   create_table "user_characters", force: :cascade do |t|
@@ -201,9 +156,12 @@ ActiveRecord::Schema.define(version: 20170515071018) do
     t.datetime "updated_at",                           null: false
     t.integer  "exp",                  default: 1
     t.integer  "level",                default: 1
+    t.string   "character_type"
+    t.integer  "skill_id"
     t.index ["breed_id"], name: "index_user_characters_on_breed_id"
     t.index ["character_id"], name: "index_user_characters_on_character_id"
     t.index ["game_id"], name: "index_user_characters_on_game_id"
+    t.index ["skill_id"], name: "index_user_characters_on_skill_id"
     t.index ["user_id"], name: "index_user_characters_on_user_id"
   end
 

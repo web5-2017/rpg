@@ -1,2 +1,0 @@
-module Profile::AlternativesHelper
-end

@@ -1,21 +1,21 @@
-<ul class="nav nav-tabs">
-  <%= li_active(profile_game_path(@game))  do %>
-    <% link_to 'Histórias', profile_game_path(@game) %>
-  <% end %>
+<div class="clearfix">
+  <%= link_to 'Entrar', gm_match_root_path(@game), class: 'btn btn-primary pull-right' %>
 
-  <%= li_active(profile_game_items_path(@game))  do %>
-    <% link_to 'Items', profile_game_items_path(@game) %>
-  <% end %>
+  <ul class="nav nav-tabs">
+    <%= li_active(profile_game_path(@game))  do %>
+      <% link_to 'Histórias', profile_game_path(@game) %>
+    <% end %>
 
-  <%= li_active(profile_game_players_path(@game), profile_game_friend_list_path(@game)) do %>
-    <% link_to 'Jogadores', profile_game_players_path(@game) %>
-  <% end %>
+    <%= li_active(profile_game_players_path(@game), profile_game_friend_list_path(@game)) do %>
+      <% link_to 'Jogadores', profile_game_players_path(@game) %>
+    <% end %>
 
-  <%= li_active profile_game_breeds_path(@game) do %>
-    <% link_to 'Raças', profile_game_breeds_path(@game) %>
-  <% end %>
+    <%= li_active profile_game_breeds_path(@game) do %>
+      <% link_to 'Raças', profile_game_breeds_path(@game) %>
+    <% end %>
 
-  <%= li_active profile_game_characters_path(@game) do %>
-    <% link_to 'Personagens', profile_game_characters_path(@game) %>
-  <% end %>
-</ul>
+    <%= li_active profile_game_characters_path(@game) do %>
+      <% link_to 'Personagens', profile_game_characters_path(@game) %>
+    <% end %>
+  </ul>
+</div>

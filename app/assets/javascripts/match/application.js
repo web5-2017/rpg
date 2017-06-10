@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require jquery.minicolors
 //= require turbolinks
 //= require bootsy
 //= require_self
 //= require match/loads
 //= require match/character
 //= require match/new_character
+//= require match/session
 
 window.APP = {}

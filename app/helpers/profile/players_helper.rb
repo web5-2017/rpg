@@ -1,2 +1,0 @@
-module Profile::PlayersHelper
-end

@@ -1,0 +1,8 @@
+<% if @match_session.nil?  %>
+ <p>Nenhuma sessão em andamento</p>
+<% else %>
+  <article id="session">
+    <%= render 'session' %>
+    <%= render 'console' %>
+  </article>
+<% end %>

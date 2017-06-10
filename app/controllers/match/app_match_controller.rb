@@ -3,14 +3,17 @@ class Match::AppMatchController < ::ActionController::Base
   before_action :authenticate_user!
   before_action :find_game
 
-  layout '/layouts/match/application'
+  layout '/layouts/match/match_application'
 
   private
   def find_game
-    if is_a? Match::GameController
-      @game = current_user.games_playing.find params[:id]
-    else
+    begin
       @game = current_user.games_playing.find params[:game_id]
+    rescue ActiveRecord::RecordNotFound => e
+      puts e.message
+      render file: 'public/404.html',
+             status: :not_found,
+             layout: false
     end
   end
 end

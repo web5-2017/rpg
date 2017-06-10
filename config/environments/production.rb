@@ -90,8 +90,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  user_email = YAML.load_file('/config/user_email.yml')
-
+  smtp_config = YAML.load_file("config/smtp_config.yml")
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'jefferson.tsi.pro.br' }
@@ -99,8 +98,8 @@ Rails.application.configure do
     :address        => 'smtp.gmail.com',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => user_email[:email],
-    :password       => user_email[:password],
+    :user_name      => smtp_config["email"],
+    :password       => smtp_config["password"],
     :domain         => 'gmail.com',
     :enable_starttls_auto => true
   }

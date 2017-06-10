@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   get '/cast_dice', to: 'dices#cast_dice'
+  get '/game/:game_id/breeds/:id', to: 'breeds#show', as: :bread_characters
 
   ################################ Rotas para devise ###############################
   devise_for :users
@@ -10,9 +11,6 @@ Rails.application.routes.draw do
 
   ################################ Rotas para historias ###############################
   resources :histories, only: [:show, :index]
-
-  ################################ Rotas para upload de images ###############################
-  resources :pictures, only: [:index, :create]
 
   ################################ Rotas para profile ###############################
   namespace :profile do
@@ -34,16 +32,7 @@ Rails.application.routes.draw do
       resources :histories, only: :index do
         get '/add_history', to: 'games#add_history'
         delete '/remove_history', to: 'games#remove_history'
-
-        ################################ Rotas para o challenges ###############################
-        resources :challenges do
-          delete '/alternatives/:id', to: 'alternatives#destroy', as: 'alternative'
-        end
       end
-
-      ################################ Rotas para Items ###############################
-      resources :items
-
       ################################ Rotas para Raças ###############################
       resources :breeds
 
@@ -59,17 +48,13 @@ Rails.application.routes.draw do
 
     ################################ Rotas para historias ###############################
     get '/my-histories', to: 'histories#my_histories'
-    resources :histories, except: :index do
-
-      ################################ Rotas para Mapas ###############################
-      resources :maps
-    end
+    resources :histories, except: :index
   end# >>>>>>>>>>>>>>> Fim Rotas profile
 
   ################################ Rotas para Match ###############################
   namespace :match do
-    resources :game, only: :show do
-      resources :breeds, only: :show
+    scope '/game/:game_id' do
+      root 'dashboard#index'
 
       get '/character', to: 'characters#show'
       patch '/character', to: 'characters#update'
@@ -77,8 +62,22 @@ Rails.application.routes.draw do
       post '/save_attrs', to: 'characters#save_attrs'
       get '/character/edit', to: 'characters#edit'
       get '/character/new', to: 'characters#new'
+
+      get '/sessions/:id/run_code', to: 'sessions#run_code', as: 'sessions_run_code'
     end
   end
+
+  ################################ Rotas para GM Match (área do gm) ###############################
+  namespace :gm_match do
+    scope '/game/:game_id' do
+      root 'dashboard#index'
+
+      resources :characters, path: 'characters/:type'
+
+      resources :sessions, only: :create
+      get '/sessions/:id/run_code', to: 'sessions#run_code', as: 'sessions_run_code'
+    end
+  end# >>>>>>>>>>>>>>> Fim Rotas gm match
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

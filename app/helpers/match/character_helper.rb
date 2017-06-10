@@ -1,2 +1,0 @@
-module Match::CharacterHelper
-end
