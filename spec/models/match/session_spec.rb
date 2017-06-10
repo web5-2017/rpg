@@ -28,16 +28,6 @@ RSpec.describe Match::Session, type: :model do
       expect(session.log).to eq base_log + "\nMestre# - \\start\nPartida iniciada"
     end
 
-    it 'Deve gerar um help no log' do
-      session = Match::Session.new game_id: game.id
-      session.save
-
-      help_text = "\n-------------- help\n\\start - para iniciar a partida\n\\battle_start [ids dos inimigos da batalha] exemplo: \\battle_start 1 4 5 20 - Para dar inicio a uma batalha\n\\atk [id do alvo] [id do personagem] exemplo: atk 3 2 - Para atacar um personagem\n\\current_dice [tipo do dado] exemplo: \\current_dice 6 - Muda o dado a ser usado nos ataques\n\\send_exp [quantidade de exp] [id(s) dos(s) personagem(s)] exemplo: \\send_exp 8 4 \\send_exp 8 4 3 - Para dar exp para um ou mais personagens\n\\cast_dice [tipo do dado] exemplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)\n\\set_skill [id do personagem] [id da habilidade] exemplo: \\set_skill 2 3 - Prepara a habilidade para o ataque"
-
-      session.master_exec('\help', 'Mestre')
-      expect(session.log).to eq base_log + "\nMestre# - \\help" + help_text
-    end
-
     it 'Deve mostrar que o mando não existe' do
       session = Match::Session.new game_id: game.id
       session.save
@@ -50,10 +40,10 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
 
-      log_text = "\nPara iniciar uma batalha, deve primeiro dar inicio na partida com '\\start'"
+      log_text = "\nDeve primeiro dar inicio na partida com '\\start'"
 
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
-      expect(session.log).to eq base_log + "\nMestre# - \\battle_start #{mob_1.id} #{mob_2.id}" + log_text
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
+      expect(session.log).to eq base_log + "\nMestre# - \\start_battle #{mob_1.id} #{mob_2.id}" + log_text
     end
 
     it 'Deve criar uma batalha' do
@@ -61,9 +51,9 @@ RSpec.describe Match::Session, type: :model do
       session.save
       session.master_exec('\start', 'Mestre')
 
-      log_text = session.log + "\nMestre# - \\battle_start #{mob_1.id} #{mob_2.id}\nBatalha iniciada\nÉ a vez de #{mob_1.name}"
+      log_text = session.log + "\nMestre# - \\start_battle #{mob_1.id} #{mob_2.id}\nBatalha iniciada\nÉ a vez de #{mob_1.name}"
 
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
       expect(session.log).to eq log_text
       expect(session.battle.character_turn).to eq mob_1
       expect(session.battle.character_turn_id).to eq mob_1.id
@@ -73,11 +63,11 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
 
       current_hp = char.hp
 
-      log_text = session.log + "\nMestre# - \\atk #{char.id} #{mob_1.id}\nO #{mob_1.name} atacou o #{char.name}"
+      log_text = session.log + "\nMestre# - \\atk #{char.id} #{mob_1.id}\nUsando o dado: 6\nO #{mob_1.name} atacou o #{char.name}"
 
       session.master_exec("\\atk #{char.id} #{mob_1.id}", 'Mestre')
       log_text += "\nÉ a vez de #{session.battle.character_turn.name}"
@@ -92,12 +82,12 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
 
       char.hp = 1
       char.save
 
-      log_text = session.log + "\nMestre# - \\atk #{char.id} #{mob_1.id}\nO #{mob_1.name} atacou o #{char.name}"
+      log_text = session.log + "\nMestre# - \\atk #{char.id} #{mob_1.id}\nUsando o dado: 6\nO #{mob_1.name} atacou o #{char.name}"
 
       session.master_exec("\\atk #{char.id} #{mob_1.id}", 'Mestre')
 
@@ -147,13 +137,13 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
       session.master_exec("\\atk #{char.id} #{mob_1.id}", 'Mestre')
       session.master_exec("\\atk #{char.id} #{mob_2.id}", 'Mestre')
 
       current_hp = mob_1.hp
 
-      log_text = session.log + "\nUser# - \\atk #{mob_1.id}\nO User atacou o #{mob_1.name}"
+      log_text = session.log + "\nUser# - \\atk #{mob_1.id}\nUsando o dado: 6\nO User atacou o #{mob_1.name}"
 
       session.player_exec("\\atk #{mob_1.id}", 'User', char)
 
@@ -169,7 +159,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
       session.battle.character_turn_id = char.id
 
       mob_1.hp = 0
@@ -186,7 +176,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_2.id}", 'Mestre')
       session.battle.character_turn_id = char.id
 
 
@@ -200,7 +190,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
       session.battle.character_turn_id = char.id
 
       log_text = session.log + "\nUser# - \\set_skill #{skill.id}\nSkill selecionada"
@@ -214,7 +204,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_1.id} #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_1.id} #{mob_2.id}", 'Mestre')
       session.battle.character_turn_id = char.id
       char.mp = 0
       char.save
@@ -232,7 +222,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
       session.master_exec('\start', 'Mestre')
-      session.master_exec("\\battle_start #{mob_2.id}", 'Mestre')
+      session.master_exec("\\start_battle #{mob_2.id}", 'Mestre')
 
       log_text = session.log + "\nMestre# - \\atk #{char.id} #{mob_1.id}\nEsse personagem não está na batalha"
 

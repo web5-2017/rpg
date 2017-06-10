@@ -72,6 +72,7 @@ class Match::Session < ApplicationRecord
       inserting_in_the_log "O #{target.name} está morto!!"
       return false
     else
+      inserting_in_the_log "Usando o dado: #{self.current_dice}"
       @current_char.attack target: target, dice: self.current_dice, magic_atk: magic
       @battle.next
       self.battle_string = @battle.to_s
