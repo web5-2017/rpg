@@ -5,7 +5,7 @@
   <div class="form-inline">
     <div class="form-group">
       <label for="console-input">Mestre# - </label>
-      <input id="console-input" data-user="Mestre"  data-url="<%= gm_match_sessions_run_code_path(@game, @match_session) %>"
+      <input id="console-input" data-game="<%= @game.id %>" data-session="<%= @match_session.id %>"
                 type="text" class="form-control">
     </div>
   </div>

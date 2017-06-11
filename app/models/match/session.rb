@@ -3,26 +3,27 @@ class Match::Session < ApplicationRecord
 
   after_initialize :initial_log, :initialize_battle
 
-  attr_accessor :battle, :current_char
+  attr_accessor :battle, :current_char, :last_log
 
   def player_exec(code, name, char)
     @current_char = char
     return false if @current_char.hp <= 0
 
+    @last_log = ""
+
     compiler = Match::Compiler.new(self, code, name, false)
     compiler.run
-
-    self.save
   end
 
   def master_exec(code, name)
+    @last_log = ""
+
     compiler = Match::Compiler.new(self, code, name, true)
     compiler.run
-
-    self.save
   end
 
   def inserting_in_the_log(text)
+    @last_log += "\n" + text
     self.log += "\n" + text
   end
 
