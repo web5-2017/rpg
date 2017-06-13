@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require bootsy
 //= require_self
+//= require cable
 //= require match/loads
 //= require match/character
 //= require match/new_character
