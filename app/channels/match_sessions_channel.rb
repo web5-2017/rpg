@@ -17,11 +17,26 @@ class MatchSessionsChannel < ApplicationCable::Channel
       master_exec
     end
 
-    ActionCable.server.broadcast 'match_sessions', @match_session.last_log
+    log = @match_session.last_log
+    battle = nil
+    battle = data_battle unless @match_session.battle.nil?
+
+    ActionCable.server.broadcast 'match_sessions', {log: log, battle: battle}
     @match_session.save
   end
 
   private
+    def data_battle
+      battle = []
+      @match_session.battle.characters.each do |character|
+        char = { id: character.id, name: character.name, status: character.live }
+
+        battle << char
+      end
+
+      battle
+    end
+
     def master_exec
       @match_session = @game.sessions.find @data['session_id']
       @match_session.master_exec @data['code'], 'Mestre'

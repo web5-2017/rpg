@@ -37,12 +37,18 @@ class Match::Battle
     Match::Battle.new(JSON.parse(string))
   end
 
+  def characters
+    create_characters if @characters.nil?
+
+    @characters
+  end
+
   private
   def create_characters
     @characters = []
 
     @characters_ids.each do |id|
-      characters << ::UserCharacter.find(id)
+      @characters << ::UserCharacter.find(id)
     end
   end
 
@@ -50,7 +56,7 @@ class Match::Battle
     @characters_ids = []
 
     @characters.each do |character|
-      characters_ids << character.id
+      @characters_ids << character.id
     end
   end
 

@@ -12,25 +12,27 @@
     </div>
   </div>
 
-  <% unless @match_session.battle.nil? %>
-    <div class="panel panel-default col-md-6 col-xs-12">
-      <div class="panel-heading">Batalha</div>
-      <div class="panel-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Nome</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render partial: 'match/dashboard/char_battle', collection: @match_session.battle.characters %>
-          </tbody>
-        </table>
+  <div id="battle" class="col-md-6 col-xs-12">
+    <% unless @match_session.battle.nil? %>
+      <div class="panel panel-default">
+        <div class="panel-heading">Batalha</div>
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: 'match/dashboard/char_battle', collection: @match_session.battle.characters %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= render partial: 'modals', collection: @match_session.game.histories, as: :history %>
