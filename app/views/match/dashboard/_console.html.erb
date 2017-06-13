@@ -4,9 +4,11 @@
   </pre>
   <div class="form-inline">
     <div class="form-group">
-      <label for="console-input"><%= @char.name %># - </label>
-      <input id="console-input" data-user="Mestre"  data-url="<%= match_sessions_run_code_path(@game, @match_session) %>"
-                type="text" class="form-control">
+      <form id="console-form">
+          <label for="console-input"><%= @char.name %># - </label>
+          <input id="console-input" data-game="<%= @game.id %>" data-session="<%= @match_session.id %>"
+                    type="text" class="form-control">
+      </form>
     </div>
   </div>
 </div>

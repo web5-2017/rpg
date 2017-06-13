@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(version: 20170529031354) do
   create_table "match_sessions", force: :cascade do |t|
     t.integer  "game_id"
     t.boolean  "opened",        default: false
-    t.boolean  "closed",        default: false
     t.text     "log"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

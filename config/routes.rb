@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  mount ActionCable.server => '/cable'
   get '/cast_dice', to: 'dices#cast_dice'
   get '/game/:game_id/breeds/:id', to: 'breeds#show', as: :bread_characters
 
@@ -62,8 +63,6 @@ Rails.application.routes.draw do
       post '/save_attrs', to: 'characters#save_attrs'
       get '/character/edit', to: 'characters#edit'
       get '/character/new', to: 'characters#new'
-
-      get '/sessions/:id/run_code', to: 'sessions#run_code', as: 'sessions_run_code'
     end
   end
 
@@ -75,7 +74,6 @@ Rails.application.routes.draw do
       resources :characters, path: 'characters/:type'
 
       resources :sessions, only: :create
-      get '/sessions/:id/run_code', to: 'sessions#run_code', as: 'sessions_run_code'
     end
   end# >>>>>>>>>>>>>>> Fim Rotas gm match
 
