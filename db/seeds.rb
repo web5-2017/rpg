@@ -8,17 +8,26 @@
 
 
 Skill.create_with(description: "Lança uma bola de fogo que queima o inimigo",
-                  modifier: "atk:2,mp:10"
+                    modifier: "atk:5,mp:10"
                   ).find_or_create_by(name: 'Ataque de fogo')
 
-Skill.create_with(description: "Avança no inimigo e o golpeia",
-                  modifier: "atk:6,mp:20"
-                  ).find_or_create_by(name: 'Ataque direto')
+Skill.create_with(description: "Lança uma rajada de gelo",
+                    modifier: "atk:4,mp:10"
+                 ).find_or_create_by(name: 'Ataque de gelo')
 
-Particular.create_with(description: "Capaz de sentir um cheiro a longas distâncias",
-                  additional: 'des:10'
-                  ).find_or_create_by(name: 'Faro aguçado')
+Skill.create_with(description: "Golpeia o inimigo com um corte circular",
+                    modifier: "atk:8,mp:8"
+                 ).find_or_create_by(name: 'Corte circular')
 
-Particular.create_with(description: "Tem maior chance de convencer os outros",
-                   additional: 'car:10'
-                  ).find_or_create_by(name: 'Persuasão')
+Skill.create_with(description: "Golpeia avançando pra frente e golpenado varias vezes",
+                    modifier: "atk:10,mp:17"
+                 ).find_or_create_by(name: 'Ataque perfurante')
+
+Particular.create_with(description: "Capacidade de sentir cheiros a distância",
+                       additional: 'des:2').find_or_create_by(name: 'Faro aguçado')
+
+Particular.create_with(description: "Bom de papo, tem mais chance de convencer em uma conversa",
+                       additional: 'car:2').find_or_create_by(name: 'Carismático')
+
+Particular.create_with(description: "Grande capacidade de resolver quebra-cabeça",
+                       additional: 'sab:2').find_or_create_by(name: 'Sabedoria')

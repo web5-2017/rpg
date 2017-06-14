@@ -27,3 +27,9 @@
     padding: 10px;
   }
 }
+
+#sidebar {
+  .btn.btn-danger:hover {
+    background-color: #ca7575;
+  }
+}

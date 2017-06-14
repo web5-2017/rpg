@@ -10,4 +10,10 @@
   <%= li_active '/gm_match/game/1/characters/mob.*' do %>
     <% link_to 'MOBS', gm_match_characters_path(@game, :mob) %>
   <% end %>
+
+  <div class="divider"></div>
+
+  <%= li_active '' do %>
+    <% link_to 'Sair', profile_root_path, class: 'btn btn-danger' %>
+  <% end %>
 </ul>
