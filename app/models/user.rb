@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :games
-  has_many :characters, class_name: 'UserCharacter' 
+  has_many :characters, class_name: 'UserCharacter'
   has_and_belongs_to_many :games_playing, class_name: 'Game'
   has_many :histories
   has_and_belongs_to_many  :friend_list,
@@ -19,6 +19,7 @@ class User < ApplicationRecord
                            association_foreign_key: "second_friend_id"
 
   def self.where_name_like(query, current_user)
-    return where("name LIKE '%#{query}%' AND id != #{current_user.id} AND confirmed_at > 0")
+    users = where("name LIKE '%#{query}%' AND id != #{current_user.id}").select {|user| user.confirmed? == true }
+    return users
   end
 end
