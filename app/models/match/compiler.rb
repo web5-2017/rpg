@@ -1,6 +1,6 @@
 class Match::Compiler
   HELP_ROOT = "-------------- help\n\\start - para iniciar a partida\n\\end - para Terminar a partida\n\\start_battle [ids dos inimigos da batalha] exemplo: \\start_battle 1 4 5 20 - Para dar inicio a uma batalha\n\\end_battle - Para terminar uma batalha\n\\atk [id do alvo] [id do personagem] exemplo: atk 3 2 - Para atacar um personagem\n\\current_dice [tipo do dado] exemplo: \\current_dice 6 - Muda o dado a ser usado nos ataques\n\\send_exp [quantidade de exp] [id(s) dos(s) personagem(s)] exemplo: \\send_exp 8 4 \\send_exp 8 4 3 - Para dar exp para um ou mais personagens\n\\cast_dice [tipo do dado] exemplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)\n\\set_skill [id do personagem] [id da habilidade] exemplo: \\set_skill 2 3 - Prepara a habilidade para o ataque"
-  HELP_USER = "-------------- help\\atk [id do alvo] exemplo: atk 4 - Para atacar um personagem\n\\set_skill [id da skill] exemplo: \\set_skill 2 - Prepara a habilidade para o ataque\n\\cast_dice [tipo do dado] exmplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)"
+  HELP_USER = "-------------- help\n\\atk [id do alvo] exemplo: atk 4 - Para atacar um personagem\n\\set_skill [id da skill] exemplo: \\set_skill 2 - Prepara a habilidade para o ataque\n\\cast_dice [tipo do dado] exmplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)"
   NOT_FOUND = "Comando desconhecido"
   ERROR_SESSION_NOT_STARTED = "Deve primeiro dar inicio na partida com '\\start'"
 
@@ -179,7 +179,7 @@ class Match::Compiler
     for i in 2..(@code.size- 1)
       char = @session.game.chars.find @code[i]
       @session.send_exp(exp, char)
-      @session.inserting_in_the_log "#{char.name} recebeu 5 de exp"
+      @session.inserting_in_the_log "#{char.name} recebeu #{exp} de exp"
     end
   end
 

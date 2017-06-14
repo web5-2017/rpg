@@ -8,11 +8,11 @@
 
 
 Skill.create_with(description: "Lança uma bola de fogo que queima o inimigo",
-                    modifier: "atk:5,mp:10"
+                    modifier: "atk:15,mp:25"
                   ).find_or_create_by(name: 'Ataque de fogo')
 
 Skill.create_with(description: "Lança uma rajada de gelo",
-                    modifier: "atk:4,mp:10"
+                    modifier: "atk:13,mp:20"
                  ).find_or_create_by(name: 'Ataque de gelo')
 
 Skill.create_with(description: "Golpeia o inimigo com um corte circular",
@@ -20,7 +20,7 @@ Skill.create_with(description: "Golpeia o inimigo com um corte circular",
                  ).find_or_create_by(name: 'Corte circular')
 
 Skill.create_with(description: "Golpeia avançando pra frente e golpenado varias vezes",
-                    modifier: "atk:10,mp:17"
+                    modifier: "atk:10,mp:12"
                  ).find_or_create_by(name: 'Ataque perfurante')
 
 Particular.create_with(description: "Capacidade de sentir cheiros a distância",
