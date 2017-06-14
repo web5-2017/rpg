@@ -29,6 +29,7 @@ class MatchSessionsChannel < ApplicationCable::Channel
     def data_battle
       battle = []
       @match_session.battle.characters.each do |character|
+        character.reload
         char = { id: character.id, name: character.name, status: character.live }
 
         battle << char

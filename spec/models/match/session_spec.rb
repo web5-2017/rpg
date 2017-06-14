@@ -72,7 +72,6 @@ RSpec.describe Match::Session, type: :model do
       session.master_exec("\\atk #{char.id} #{mob_1.id}", 'Mestre')
       log_text += "\nÉ a vez de #{session.battle.character_turn.name}"
       char.reload
-      session.reload
       expect(session.log).to eq log_text
       expect(current_hp > char.hp).to eq true
       expect(session.battle.character_turn_id).to eq mob_2.id
@@ -119,7 +118,7 @@ RSpec.describe Match::Session, type: :model do
       session = Match::Session.new game_id: game.id
       session.save
 
-      help_text = "\n-------------- help\\atk [id do alvo] exemplo: atk 4 - Para atacar um personagem\n\\set_skill [id da skill] exemplo: \\set_skill 2 - Prepara a habilidade para o ataque\n\\cast_dice [tipo do dado] exmplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)"
+      help_text = "\n-------------- help\n\\atk [id do alvo] exemplo: atk 4 - Para atacar um personagem\n\\set_skill [id da skill] exemplo: \\set_skill 2 - Prepara a habilidade para o ataque\n\\cast_dice [tipo do dado] exmplo: \\cast_dice 6 - Joga um dado (Apenas joga e mostra o valor)"
 
       session.player_exec('\help', 'User', char)
       expect(session.log).to eq base_log + "\nUser# - \\help" + help_text

@@ -49,7 +49,7 @@
 
     <ul>
       <% @character.breed.particulars.each do |particular| %>
-        <li><%= particular.name %></li>
+        <li><%= particular.name %> - adicional: <%= particular.additional %> </li>
       <% end %>
     </ul>
 
@@ -60,7 +60,7 @@
 
     <ul>
       <% @character.character.skills.each do |skill| %>
-        <li><%= skill.name %></li>
+        <li><%= skill.name %> - id: <%= skill.id %> - modificação: <%= skill.modifier %></li>
       <% end %>
     </ul>
 

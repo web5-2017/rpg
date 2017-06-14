@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   layout :layout_feature
 
+  def after_sign_in_path_for(resource)
+    profile_root_path
+  end
+
   protected
 
   def layout_feature

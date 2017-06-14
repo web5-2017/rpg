@@ -12,6 +12,8 @@
       <h1><%= @character.name %></h1>
       <%= link_to 'editar', match_character_edit_path(@game), class: 'btn btn-primary pull-right' %>
     </header>
+    <p>ID: <%= @character.id %></p>
+    <p>Nivel: <%= @character.level %></p>
 
     história:
     <p><%= @character.history %></p>

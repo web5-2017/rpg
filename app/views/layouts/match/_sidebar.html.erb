@@ -6,4 +6,10 @@
   <%= li_active match_character_path(@game) do %>
     <% link_to 'Personagem', match_character_path(@game) %>
   <% end %>
+
+  <div class="divider"></div>
+
+  <%= li_active '' do %>
+    <% link_to 'Sair', profile_root_path, class: 'btn btn-danger' %>
+  <% end %>
 </ul>
