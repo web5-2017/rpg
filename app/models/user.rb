@@ -19,6 +19,7 @@ class User < ApplicationRecord
                            association_foreign_key: "second_friend_id"
 
   def self.where_name_like(query, current_user)
-    return where("name LIKE '%#{query}%' AND id != #{current_user.id} AND confirmed_at > '0000-00-00 00:00:00'::timestamp")
+    users = where("name LIKE '%#{query}%' AND id != #{current_user.id}").select {|user| user.confirmed? == true }
+    return users
   end
 end
